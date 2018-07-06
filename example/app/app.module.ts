@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { ExampleModule } from '../../src';
+import { SearchWidgetModule } from '../../src';
 
 import { AppComponent } from './app.component';
 
 @NgModule({
   imports: [
     BrowserModule,
-    ExampleModule,
+    SearchWidgetModule,
   ],
   declarations: [
     AppComponent,

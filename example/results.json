@@ -1,0 +1,81 @@
+{
+  "_embedded": {
+      "results": [
+        {
+          "id": "0",
+          "title": "Aankoopsuggestie bibliotheken Antwerpen",
+          "description": "Het antwerpen.be-centrum organiseert cursussen voor Antwerpenaars die willen kennismaken met computer, internet, multimedia en tablets. In het cyberlokaal&nbsp;staan 18 computers om op het … internet te surfen en om het Office pakket … gebruiken. Een team enthousiaste …",
+          "href": "https://www.antwerpen.be/info/52d5051b39d8a6ec798b45e5/doe-een-aankoopsuggestie",
+          "tags": [ "Antwerpen morgen", "Ondernemen in Antwerpen" ]
+        },
+        {
+          "id": "1",
+          "title": "Contactformulier bibliotheken Antwerpen",
+          "description": "Dit is het formulier voor een aankoopsuggestie voor bibliotheken in Antwerpen …",
+          "href": "https://www.antwerpen.be/info/52d5051b39d8a6ec798b45e5/doe-een-aankoopsuggestie",
+          "tags": [ "Ondernemen in Antwerpen" ]
+        },
+        {
+          "id": "2",
+          "title": "Connect2Antwerp",
+          "description": "Meldt u aan voor Connect2Antwerp, het stakeholderprogramma rond de externe marketing van … Antwerpen.",
+          "href": "https://www.antwerpen.be/info/52d5051b39d8a6ec798b45e5/doe-een-aankoopsuggestie",
+          "tags": [ "Ondernemen in Antwerpen" ]
+        },
+        {
+          "id": "3",
+          "title": "Taxicheques bestellen",
+          "description": "Dit is het formulier voor een aankoopsuggestie voor bibliotheken in Antwerpen…",
+          "href": "https://www.antwerpen.be/info/52d5051b39d8a6ec798b45e5/doe-een-aankoopsuggestie",
+          "tags": [ "Ondernemen in Antwerpen" ]
+        },
+        {
+          "id": "4",
+          "title": "District Antwerpen",
+          "description": "Informatie van district Antwerpen.",
+          "href": "https://www.antwerpen.be/info/52d5051b39d8a6ec798b45e5/doe-een-aankoopsuggestie",
+          "tags": [ "Ondernemen in Antwerpen" ]
+        },
+        {
+          "id": "5",
+          "title": "Selectiecentrum stad Antwerpen",
+          "description": "De stad Antwerpen is de grootste lokale werkgever van Vlaanderen. Geen wonder dat de stad de voorbije jaren veel ervaring en kennis heeft opgedaan op HR-gebied. Die expertise wil de stad ook delen met uw gemeente, OCMW, vzw of andere … organisatie.",
+          "href": "https://www.antwerpen.be/info/52d5051b39d8a6ec798b45e5/doe-een-aankoopsuggestie",
+          "tags": [ "Ondernemen in Antwerpen" ]
+        },
+        {
+          "id": "6",
+          "title": "Stadhuis van Antwerpen",
+          "description": "De stad Antwerpen is de grootste lokale werkgever van Vlaanderen. Geen wonder dat de stad de voorbije jaren veel ervaring en kennis heeft opgedaan op HR-gebied. Die expertise wil de stad ook delen met uw gemeente, OCMW, vzw of andere … organisatie.",
+          "href": "https://www.antwerpen.be/info/52d5051b39d8a6ec798b45e5/doe-een-aankoopsuggestie",
+          "tags": [ "Ondernemen in Antwerpen" ]
+        },
+        {
+          "id": "7",
+          "title": "Visit Antwerpen",
+          "description": "Op zoek naar informatie over toerisme in Antwerpen? Op de website www.visitantwerpen.be ontdekt u alles over een onvergetelijk bezoek aan de stad.",
+          "href": "https://www.antwerpen.be/info/52d5051b39d8a6ec798b45e5/doe-een-aankoopsuggestie",
+          "tags": [ "Visit AntwerpenVisit Antwerpen", "Ondernemen in Antwerpen" ]
+        }
+      ],
+      "tags": [
+        { "tag": "Ondernemen in Antwerpen", "count": 8 },
+        { "tag": "Visit Antwerpen", "count": 1 },
+        { "tag": "Portaal", "count": 0 },
+        { "tag": "This is Antwerpen", "count": 0 },
+        { "tag": "Business in Antwerpen", "count": 0 },
+        { "tag": "Antwerpen morgen", "count": 1 }
+      ]
+    },
+    "_links": {
+      "self": {
+        "href": "api/v1/search"
+      }
+    },
+    "_page": {
+      "size": 1,
+      "totalElement": 8,
+      "totalPages": 1,
+      "number": 1
+    }
+  }

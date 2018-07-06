@@ -8,7 +8,7 @@ describe('App', () => {
     page.navigateTo();
   });
 
-  it('should display "Smart Widget Starter Kit>"', () => {
-    expect(page.getTitleText()).toContain('Smart Widget Starter Kit');
+  it('should display "Search Smart Widget"', () => {
+    expect(page.getTitleText()).toContain('Search Smart Widget');
   });
 });

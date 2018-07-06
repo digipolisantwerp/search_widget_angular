@@ -1,0 +1,114 @@
+
+$green:  #018C95;
+$white:  #fff;
+$grey:   #E5E5E6;
+
+.aui-search{
+    position: relative;
+    z-index: 2000;
+    width: 100%;
+    margin: 0 auto;
+    
+    @media (min-width: 786px){
+        flex-direction: row;
+        width: 80%;
+    }
+
+    &-top{
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        @media (min-width: 786px){
+            flex-direction: row;
+        }
+    }
+
+    &-bar{
+        width: 100%;
+    }
+
+    &.expand{
+        flex-direction: column;
+        @media (min-width: 786px){
+            width: 80%;
+        }
+
+        .aui-search-top{
+            width: 100%;
+            margin: 0 auto;
+            flex-direction: column;
+
+            @media (min-width: 786px){
+                width: 60%;
+            }
+        }
+
+        .aui-search-question{
+            padding-left: 0;
+            width: 100%;
+            font-family: 'Antwerpen Regular';
+
+            @media (min-width: 786px){
+                flex-direction: column;
+                padding-bottom: .5em;
+            }
+        }
+    }
+
+    &-question{
+        font-size: 1rem;
+        margin-bottom: 1em;
+        width: 100%;
+
+        @media (min-width: 786px){
+            padding-left: 0.5em;
+            margin-bottom: 0;
+            font-size: 1.6rem;
+        }
+    }
+
+    &-box{
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    &-icon{
+        padding: 1.1em;
+        background-color: $green;
+        color: $white;
+        cursor: pointer;
+    }
+}
+
+.aui-search{
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    
+    input{
+        appearance: none;
+        border: 0;
+        width: 100%;
+        padding: 1rem 1.5rem;
+        border-radius: 0;
+    }
+}
+
+.m-flyout{
+    width: 100%;
+    border: 1px solid white;
+    
+    &.is-open{
+        border: 1px solid #B0B0B0;
+        border-right: 0;
+    }
+}
+
+.m-flyout__content {
+    margin-left: -1px;
+    width: calc(100% + 2px);
+}

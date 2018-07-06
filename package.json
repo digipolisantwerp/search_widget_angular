@@ -1,9 +1,9 @@
 {
-  "name": "@acpaas-ui-widgets/ngx-starter-kit",
-  "description": "Smart Widget UI Starter Kit (Angular)",
+  "name": "@acpaas-ui-widgets/ngx-search",
+  "description": "Search Smart Widget UI package (Angular)",
   "author": {
-    "name": "Joeri Sebrechts",
-    "email": "joeri.sebrechts@digipolis.be"
+    "name": "Pieter-Jan Sas",
+    "email": "pieter-jan.sas@digipolis.be"
   },
   "version": "1.0.0",
   "license": "MIT",
@@ -39,7 +39,13 @@
     "@angular/core": "^5.0.0",
     "@angular/forms": "^5.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@acpaas-ui/flyout": "^4.0.3",
+    "@acpaas-ui/mask": "^4.0.0",
+    "@acpaas-ui/selectable-list": "^3.0.1",
+    "lodash.get": "^4.4.2",
+    "lodash.isequal": "^4.5.0"
+  },
   "devDependencies": {
     "@a-ui/core": "^2.0.3",
     "@angular/animations": "^5.0.0",
