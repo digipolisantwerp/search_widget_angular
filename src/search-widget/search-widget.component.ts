@@ -52,6 +52,7 @@ export class SearchWidgetComponent implements ControlValueAccessor, OnInit, OnCh
     @Input() public loadingText: string;
     @Input() public noResultsText: string;
     @Input() public showAllByDefault = false;
+    @Input() public colorSearch: string = '018C95';
 
     // specify which label/value props to use
     @Input() label: string;
@@ -214,7 +215,7 @@ export class SearchWidgetComponent implements ControlValueAccessor, OnInit, OnCh
             return this.onSelect(null);
         }
 
-        // reset the query for an invalid query if clearInvalid is true
+        // reset the query for an invalid query and if clearInvalid is true
         if (this.clearInvalid && this.query && (!this.results || !this.results.length) && this.index < 0) {
             this.query = this.selectedItem ? this.label ? this.selectedItem[this.label] : this.selectedItem : '';
         }

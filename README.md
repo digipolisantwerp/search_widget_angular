@@ -55,11 +55,12 @@ Supported attributes:
 - **remote**: Set on true if the results are coming from a remote url (default: true)
 - **minCharacters**: Minimal characters to search in the results (default: 0)
 - **mask**: Add a mask if necessary for the input field
-- **clearInvalid**: 
-- **searchIncentiveText**: 
+- **clearInvalid**: If the query is invalid, set true to clear the value
+- **searchIncentiveText**: The message shown when the user focuses on the input field (useful for remote search)
 - **loadingText**: Text when loading the results
 - **noResultsText**: Text when the results is empty
 - **showAllByDefault**: Show all results by default when this is true (default: false)
+- **colorSearch**: Add the color of the search button (default: '018C95' = green)
 - **label**: Add a label if the result contains an object instead of a string
 - **value**: Add a start value to the input field 
 

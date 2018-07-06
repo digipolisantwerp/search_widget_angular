@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="aui-search-icon" (click)="onSelect()">
+        <div class="aui-search-icon" [ngStyle]="{'background-color': '#' + colorSearch}" (click)="onSelect()">
             <i class="fa fa-search"></i>
         </div>
     </div>
