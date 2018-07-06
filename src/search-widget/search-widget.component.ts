@@ -187,7 +187,7 @@ export class SearchWidgetComponent implements ControlValueAccessor, OnInit, OnCh
             this.openFlyout(); // open the flyout when there is a change
         }
 
-        if(this.query.length <= 2){
+        if(this.query.length <= this.minCharacters){
             this.results = [];
             this.closeFlyout();
         }

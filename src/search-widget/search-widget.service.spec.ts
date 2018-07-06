@@ -6,7 +6,7 @@ import { environment } from '../../config/environment';
 
 describe('SearchWidgetService', () => {
     const testValues: SearchWidgetValue[] = [
-        {tag: 'Ondernemen in Antwerpen', count : 3}
+        { tag: 'Aankoopsuggestie'}
     ]
 
     let service: SearchWidgetService;
