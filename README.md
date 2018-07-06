@@ -1,43 +1,90 @@
-# Smart Widget UI Starter Kit (Angular)
+# Search Smart Widget UI (Angular)
 
-Dit is een starter kit om een Angular 5+ front-end te bouwen voor een ACPaaS UI Smart Widget. Om meer te leren over Smart Widgets en de richtlijnen te weten om deze starter kit te gebruiken kijk dan naar de [Smart Widget index pagina](https://github.com/digipolisantwerp/smart-widgets).
+This is the Angular 5+ UI for a Smart Widget implementing a search bar with suggestions. It is matched by a corresponding back-end service which is needed when running it in remote mode.
 
-Om een nieuwe widget front-end te maken:
+Link to bff: coming..
 
-1. Kloon deze repo.
+![screenshot](example.png)
 
-   `git clone https://github.com/digipolisantwerp/starter-kit_widget_angular.git`
+There is a demo app, see below for instructions on running it.
 
-2. Implementeer je widget in de `src` map.
+## How to use
 
-3. Implementeer een voorbeeld van het gebruik van je widget in de `example` map.
+### Installing
 
-   - Als jouw widget gebruikt kan worden met en zonder een BFF, gelieve dan een voorbeeld van elk te geven.
+Copy the .npmrc file from this repo to your local repo to set up the link to nexusrepo.antwerpen.be npm repository.
 
-4. Schrijf enkele tests voor jouw widget door `.spec.ts files` toe te voegen aan de `src` map.
+Then install (you will need to be connected to the Digipolis network):
 
-   - Test eenmalig met `npm test`, en met `npm run test-watch` in *watch* modus.
+```sh
+> npm install @acpaas-ui-widgets/ngx-search
+```
 
-5. Pas alle relevante bestanden aan om de referenties naar `starter-kit`, `Starter Kit` en `example` te vervangen.
+Import the component in your module:
 
-   - `package.json`: ACPaaS UI componenten waarvan je afhankelijk bent horen in `dependencies` te gaan
-   - `.angular-cli.json`
-   - Andere bestanden met bovenstaande termen...
-   - Verwijder `package-lock.json` en draai `npm install` om het opnieuw te genereren.
+```ts
+@NgModule({
+  imports: [
+    ...,
+    SearchWidgetModule
+  ],
+  ...
+})
+```
 
-6. Plaats geschikte README.md en CONTRIBUTING.md bestanden.
+In the index.html, include the core branding stylesheet:
 
-   - Vervang `README.md` door `README.example.md` en pas het aan.
-   - Hernoem `CONTRIBUTING.example.md` naar `CONTRIBUTING.md` en pas het aan.
+```html
+<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/2.0.1/main.min.css">
+```
 
-7. Push jouw widget naar een nieuwe repo.
+In your template:
 
-8. Volg de instructies uit de [Smart Widgets contributing pagina](https://github.com/digipolisantwerp/starter-kit_widget_angular/blob/master/CONTRIBUTING.md) om Digipolis op de hoogte te stellen van jouw widget en die te publiceren.
+```html
+    <aui-search url="http://localhost:4200/suggestions.json"></aui-search>
+```
+(Replace the url of the BFF service.)
 
-## Bijdragen aan deze starter kit
 
-Wens je wijzigingen te maken aan deze starter kit, kom dan even langs op het [#acpaas-ui-dev slack channel](https://dgpls.slack.com/messages/C4S2D7KTK) of maak een github issue.
+Supported attributes:
+- **url**: The datasource to get the suggestions
+- **id**: Id to duplicate the widget on same page without interfering
+- **placeholder**: Specify the text to show in an empty field (default: Search..)
+- **results**: The results of the remote suggestions (default: [])
+- **data**: The results of the local suggestions (default: [])
+- **remote**: Set on true if the results are coming from a remote url (default: true)
+- **minCharacters**: Minimal characters to search in the results (default: 0)
+- **mask**: Add a mask if necessary for the input field
+- **clearInvalid**: 
+- **searchIncentiveText**: 
+- **loadingText**: Text when loading the results
+- **noResultsText**: Text when the results is empty
+- **showAllByDefault**: Show all results by default when this is true (default: false)
+- **label**: Add a label if the result contains an object instead of a string
+- **value**: Add a start value to the input field 
 
-## Licentie
+Events:
+- **select**: triggers when the the search icon, enter or a selected tag is pressed
 
-Dit project is gepubliceerd onder de [MIT licentie](LICENSE.md).
+## Run the demo app
+
+Set up the .npmrc (see above), then run:
+
+```sh
+> npm install
+> npm start
+```
+
+Browse to [localhost:4200](http://localhost:4200)
+
+To use the example app, you will need to have also started the corresponding back-end service.
+
+## Contributing
+
+We welcome your bug reports and pull requests.
+
+Please see our [contribution guide](CONTRIBUTING.md).
+
+## License
+
+This project is published under the [MIT license](LICENSE.md).

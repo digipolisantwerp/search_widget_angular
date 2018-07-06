@@ -44,7 +44,7 @@ export class SearchWidgetComponent implements ControlValueAccessor, OnInit, OnCh
     @Input() public placeholder: string = "Search..";
     @Input() public results: any[] = []; // The values for the selectable list
     @Input() public data: any[] = []; // The values to search in when remote search is disabled
-    @Input() public remote = false; // Disable or enamble remote search
+    @Input() public remote = true; // Disable or enamble remote search
     @Input() public minCharacters = 0;
     @Input() public mask: string = null;
     @Input() public clearInvalid = false;
@@ -58,7 +58,6 @@ export class SearchWidgetComponent implements ControlValueAccessor, OnInit, OnCh
     @Input() value: string;
 
     // Eventemitter for searchvalue (parent object should update the results with this param)
-    @Output() search: EventEmitter<string> = new EventEmitter();
     @Output() select: EventEmitter<any> = new EventEmitter();
 
     @ViewChild(FlyoutDirective) flyout: FlyoutDirective;

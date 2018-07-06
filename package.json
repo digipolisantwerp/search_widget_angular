@@ -20,12 +20,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/digipolisantwerp/starter-kit_widget_angular.git"
+    "url": "git+https://github.com/pieterjansas/search_widget_angular.git"
   },
   "bugs": {
-    "url": "https://github.com/digipolisantwerp/starter-kit_widget_angular/issues"
+    "url": "https://github.com/pieterjansas/search_widget_angular/issues"
   },
-  "homepage": "https://github.com/digipolisantwerp/starter-kit_widget_angular#readme",
+  "homepage": "https://github.com/pieterjansas/search_widget_angular#readme",
   "keywords": [
     "angular",
     "library",
