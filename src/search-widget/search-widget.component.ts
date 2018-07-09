@@ -23,19 +23,17 @@ import { FlyoutZoneDirective } from '@acpaas-ui/flyout';
 import { SearchWidgetService } from './search-widget.service';
 import { Observer, Observable } from 'rxjs';
 
+const FORMAT_NG_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => SearchWidgetComponent), // tslint:disable-line
+    multi: true
+};
+
 @Component({
     selector: 'aui-search',
-    styleUrls: [
-        './search-widget.component.scss'
-    ],
+    styleUrls: [ './search-widget.component.scss'],
     templateUrl: './search-widget.component.html',
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => SearchWidgetComponent), // tslint:disable-line
-            multi: true
-        }
-    ]
+    providers: [ FORMAT_NG_VALUE_ACCESSOR ]
 })
 
 export class SearchWidgetComponent implements ControlValueAccessor, OnInit, OnChanges {
@@ -73,18 +71,11 @@ export class SearchWidgetComponent implements ControlValueAccessor, OnInit, OnCh
     public focused = false;
     public align = 'top';
     public text = '';
+    public updateModel = (_: any) => { };
     private searchChange$: Observer<string>;
-
-
     private remoteValue = false;
 
-    public updateModel = (_: any) => { };
-
-    constructor(
-        private searchWidgetService: SearchWidgetService
-    ) {
-
-     }
+    constructor(private searchWidgetService: SearchWidgetService) { }
 
     // CONTROL_VALUE_ACCESSOR interface
     public writeValue(value = '') {
@@ -116,19 +107,20 @@ export class SearchWidgetComponent implements ControlValueAccessor, OnInit, OnCh
             if(this.value){
                 this.query = this.value;
             }
-            Observable.create((observer) => {
+
+            Observable.create(observer => {
                 this.searchChange$ = observer;
             }).debounceTime(300)
-                .mergeMap((search) => this.searchWidgetService.getSearchWidgetResults(this.url, this.query))
-                .subscribe((results) => {
-                    this.results = results.terms;
-                });
+              .mergeMap((search) => this.searchWidgetService.getSearchWidgetResults(this.url, this.query))
+              .subscribe(results => {
+                this.results = results.terms;
+            });
+
         }else{
             if ((Array.isArray(this.data) && this.data.length > 0) && !this.query && this.showAllByDefault) {
                 this.results = [...this.data];
             }
         }
-
         this.writeValue();
     }
 
@@ -140,6 +132,7 @@ export class SearchWidgetComponent implements ControlValueAccessor, OnInit, OnCh
         }
 
         const newData = get(changes, 'data.currentValue', []);
+        console.log(newData);
         if (!isequal(newData, get(changes, 'data.previousValue', []))) {
             if (this.remote) {
                 this.remoteSearch();

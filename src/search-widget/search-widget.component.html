@@ -1,50 +1,52 @@
-<div class="aui-search-box">
-    <div class="aui-search-bar">
-        <div class="m-flyout--scrollable m-flyout--full" auiFlyout [toggleClick]="false" (closed)="onFlyoutClosed()">
-            <input *ngIf="!mask"
-                [id]="id"
-                [placeholder]="placeholder"
-                type="text"
-                auiFlyoutAction
-                [(ngModel)]="query"
-                (ngModelChange)="doSearch()"
-                auiSelectableActions
-                (keyArrowUp)="onKeyArrowUp()"
-                (keyArrowDown)="onKeyArrowDown()"
-                (keyEnter)="onKeyEnter($event)"
-                (keyEscape)="onKeyEscape()"
-                (focus)="onFocus()"
-                autocomplete="off"
-            />
-            <input *ngIf="mask"
-                [id]="id"
-                [placeholder]="placeholder"
-                type="text"
-                auiFlyoutAction
-                [(ngModel)]="query"
-                (ngModelChange)="doSearch()"
-                auiSelectableActions
-                (keyArrowUp)="onKeyArrowUp()"
-                (keyArrowDown)="onKeyArrowDown()"
-                (keyEnter)="onKeyEnter($event)"
-                (keyEscape)="onKeyEscape()"
-                (focus)="onFocus()"
-                autocomplete="off"
-                [auiMask]="mask" />
-    
-            <div auiFlyoutZone *ngIf="results && results.length > 0">
-                <span class="aui-auto-complete__info u-text-light u-padding-right u-padding-left-xs" *ngIf="focused && loadingText && searching">
-                    <span class="a-spinner a-spinner--inline a-spinner--sm u-margin-right-xs"></span>
-                    {{ loadingText }}
-                </span>
-                <span class="aui-auto-complete__info u-text-light u-padding-right u-padding-left" *ngIf="focused && searchIncentiveText && !searching && !query && (results || !results.length)">{{ searchIncentiveText }}</span>
-                <span class="aui-auto-complete__info u-text-light u-padding-right u-padding-left" *ngIf="focused && noResultsText && !searching && query && (results || !results.length)">{{ noResultsText }}</span>
+<div class="aui-search">
+    <div class="aui-search-box">
+        <div class="aui-search-bar">
+            <div class="m-flyout--scrollable m-flyout--full" auiFlyout [toggleClick]="false" (closed)="onFlyoutClosed()">
+                <input *ngIf="!mask"
+                    [id]="id"
+                    [placeholder]="placeholder"
+                    type="text"
+                    auiFlyoutAction
+                    [(ngModel)]="query"
+                    (ngModelChange)="doSearch()"
+                    auiSelectableActions
+                    (keyArrowUp)="onKeyArrowUp()"
+                    (keyArrowDown)="onKeyArrowDown()"
+                    (keyEnter)="onKeyEnter($event)"
+                    (keyEscape)="onKeyEscape()"
+                    (focus)="onFocus()"
+                    autocomplete="off"
+                />
+                <input *ngIf="mask"
+                    [id]="id"
+                    [placeholder]="placeholder"
+                    type="text"
+                    auiFlyoutAction
+                    [(ngModel)]="query"
+                    (ngModelChange)="doSearch()"
+                    auiSelectableActions
+                    (keyArrowUp)="onKeyArrowUp()"
+                    (keyArrowDown)="onKeyArrowDown()"
+                    (keyEnter)="onKeyEnter($event)"
+                    (keyEscape)="onKeyEscape()"
+                    (focus)="onFocus()"
+                    autocomplete="off"
+                    [auiMask]="mask" />
         
-                <aui-selectable-list [items]="results" [index]="index" (selected)="onSelect($event)" [label]="label" [search]="query" [itemTemplate]="template" *ngIf="results && results.length > 0 && !(focused && loadingText && searching)"></aui-selectable-list>
+                <div auiFlyoutZone *ngIf="results && results.length > 0">
+                    <span class="aui-auto-complete__info u-text-light u-padding-right u-padding-left-xs" *ngIf="focused && loadingText && searching">
+                        <span class="a-spinner a-spinner--inline a-spinner--sm u-margin-right-xs"></span>
+                        {{ loadingText }}
+                    </span>
+                    <span class="aui-auto-complete__info u-text-light u-padding-right u-padding-left" *ngIf="focused && searchIncentiveText && !searching && !query && (results || !results.length)">{{ searchIncentiveText }}</span>
+                    <span class="aui-auto-complete__info u-text-light u-padding-right u-padding-left" *ngIf="focused && noResultsText && !searching && query && (results || !results.length)">{{ noResultsText }}</span>
+            
+                    <aui-selectable-list [items]="results" [index]="index" (selected)="onSelect($event)" [label]="label" [search]="query" [itemTemplate]="template" *ngIf="results && results.length > 0 && !(focused && loadingText && searching)"></aui-selectable-list>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="aui-search-icon" [ngStyle]="{'background-color': '#' + colorSearch}" (click)="onSelect()">
-        <i class="fa fa-search"></i>
+        <div class="aui-search-icon" [ngStyle]="{'background-color': '#' + colorSearch}" (click)="onSelect()">
+            <i class="fa fa-search"></i>
+        </div>
     </div>
 </div>

@@ -3,11 +3,13 @@ $green:  #018C95;
 $white:  #fff;
 $grey:   #E5E5E6;
 
+
 :host{
     position: relative;
-    z-index: 2000;
     width: 100%;
     margin: 0 auto;
+    z-index: 2;
+    display: block;
     
     @media (min-width: 786px){
         flex-direction: row;
@@ -83,13 +85,7 @@ $grey:   #E5E5E6;
         color: $white;
         cursor: pointer;
     }
-}
 
-.aui-search{
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    
     input{
         appearance: none;
         border: 0;
