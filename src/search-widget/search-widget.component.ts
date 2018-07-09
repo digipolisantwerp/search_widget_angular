@@ -41,7 +41,7 @@ import { Observer, Observable } from 'rxjs';
 export class SearchWidgetComponent implements ControlValueAccessor, OnInit, OnChanges {
     @Input() public url;
     @Input() public id: string;
-    @Input() public placeholder: string = "Search..";
+    @Input() public placeholder: string = "";
     @Input() public results: any[] = []; // The values for the selectable list
     @Input() public data: any[] = []; // The values to search in when remote search is disabled
     @Input() public remote = true; // Disable or enamble remote search

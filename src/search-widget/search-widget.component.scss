@@ -3,7 +3,7 @@ $green:  #018C95;
 $white:  #fff;
 $grey:   #E5E5E6;
 
-.aui-search{
+:host{
     position: relative;
     z-index: 2000;
     width: 100%;
@@ -13,7 +13,9 @@ $grey:   #E5E5E6;
         flex-direction: row;
         width: 80%;
     }
+}
 
+.aui-search{
     &-top{
         width: 100%;
         margin: 0 auto;

@@ -25,10 +25,11 @@ export class SearchWidgetService {
         if (typeof dataSource === 'string') {
             const uri = dataSource +
                 ((dataSource.indexOf('?') < 0) ? '?' : '&') +
-                'search=' + search
+                'search=' + search;
+                // TEMP: dataSource instead of uri => MockData
                 return this.http.get<Observable<SearchWidgetValue[]>>(dataSource, httpOptions).pipe(
                     tap(data => data),
-                    catchError(this.handleError('getComplete', []))
+                    catchError(this.handleError('getSearchWidgetResults', []))
                 );
             } else {
             // should never happen
@@ -44,11 +45,7 @@ export class SearchWidgetService {
      */
     private handleError<T> (operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
-    
-        // TODO: send the error to remote logging infrastructure
         console.error(error); // log to console instead
-    
-        // TODO: better job of transforming error for user consumption
         this.log(`${operation} failed: ${error.message}`);
     
         // Let the app keep running by returning an empty result.
@@ -57,7 +54,6 @@ export class SearchWidgetService {
     }
 
    private log(message: string) {
-        // this.messageService.add('HeroService: ' + message);
         console.error('Message', message);
     }
 }

@@ -73,4 +73,12 @@ describe('SearchWidgetComponent', () => {
             done();
         }, 10);
     });
+
+    it('should clear the search results on value clear', () => {
+        comp.value = testValues[0].tag;
+        comp.results = testValues;
+        fixture.detectChanges();
+        comp.writeValue(null);
+        expect(comp.results.length).toBe(0);
+    });
 });
