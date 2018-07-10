@@ -1,9 +1,9 @@
-
+/* Colors */
 $green:  #018C95;
 $white:  #fff;
 $grey:   #E5E5E6;
 
-
+/* Element aui-search */
 :host{
     position: relative;
     width: 100%;
@@ -17,6 +17,7 @@ $grey:   #E5E5E6;
     }
 }
 
+/* class aui-search */
 .aui-search{
     &-top{
         width: 100%;
@@ -85,27 +86,52 @@ $grey:   #E5E5E6;
         color: $white;
         cursor: pointer;
     }
+}
 
-    input{
-        appearance: none;
-        border: 0;
-        width: 100%;
-        padding: 1rem 1.5rem;
-        border-radius: 0;
+
+/* Style for the auto-complete */
+aui-auto-complete{
+    width: 100%;
+
+    .aui-auto-complete {
+        padding: 0;
+
+        input{
+            appearance: none;
+            border: 0;
+            width: 100%;
+            padding: 1.05rem 1.5rem;
+            border-radius: 0;
+        }   
     }
 }
 
+/* Fix for flyout */
 .m-flyout{
     width: 100%;
     border: 1px solid white;
+
+    .aui-auto-complete__info{
+        border: 0;
+    }
     
     &.is-open{
         border: 1px solid #B0B0B0;
         border-right: 0;
-    }
-}
 
-.m-flyout__content {
-    margin-left: -1px;
-    width: calc(100% + 2px);
+        
+        .aui-auto-complete__info{
+            padding: 1em;
+        }
+
+        .m-flyout__content {
+            border: 1px solid #b0b0b0;
+        }
+    }
+
+    &__content {
+        margin-left: -1px;
+        width: calc(100% + 2px);
+        border: 0;
+    }
 }

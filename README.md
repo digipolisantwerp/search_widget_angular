@@ -41,31 +41,20 @@ In the index.html, include the core branding stylesheet:
 In your template:
 
 ```html
-    <aui-search url="http://localhost:4200/suggestions.json"></aui-search>
+<aui-search url="http://localhost:4200/suggestions.json"></aui-search>
 ```
 (Replace the url of the BFF service.)
 
 
 Supported attributes:
-- **url**: The datasource to get the suggestions
-- **id**: Id to duplicate the widget on same page without interfering
+- **url**: (Api) Url to provide suggestions for a search
 - **placeholder**: Specify the text to show in an empty field (default: Search..)
-- **results**: The results of the remote suggestions (default: [])
-- **data**: The results of the local suggestions (default: [])
-- **remote**: Set on true if the results are coming from a remote url (default: true)
-- **minCharacters**: Minimal characters to search in the results (default: 0)
-- **mask**: Add a mask if necessary for the input field
-- **clearInvalid**: If the query is invalid, set true to clear the value
-- **searchIncentiveText**: The message shown when the user focuses on the input field (useful for remote search)
+- **suggestions**: The results of the remote suggestions (default: string[])
+- **minCharacters**: Minimal characters to search in the results (default: 2)
+- **searchIncentiveText**: The message shown when the user focuses on the input field
 - **loadingText**: Text when loading the results
-- **noResultsText**: Text when the results is empty
-- **showAllByDefault**: Show all results by default when this is true (default: false)
+- **noResultsText**: Text when the results are empty
 - **colorSearch**: Add the color of the search button (default: '018C95' = green)
-- **label**: Add a label if the result contains an object instead of a string
-- **value**: Add a start value to the input field 
-
-Events:
-- **select**: triggers when the the search icon, enter or a selected tag is pressed
 
 ## Run the demo app
 

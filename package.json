@@ -40,14 +40,13 @@
     "@angular/forms": "^5.0.0"
   },
   "dependencies": {
-    "@acpaas-ui/flyout": "^4.0.3",
-    "@acpaas-ui/mask": "^4.0.0",
-    "@acpaas-ui/selectable-list": "^3.0.1",
-    "lodash.get": "^4.4.2",
-    "lodash.isequal": "^4.5.0"
+    "@acpaas-ui/auto-complete": "^4.0.2"
   },
   "devDependencies": {
     "@a-ui/core": "^2.0.3",
+    "@acpaas-ui/flyout": "^4.0.3",
+    "@acpaas-ui/mask": "^4.0.0",
+    "@acpaas-ui/selectable-list": "^3.0.1",
     "@angular/animations": "^5.0.0",
     "@angular/cli": "1.7.3",
     "@angular/common": "^5.0.0",
