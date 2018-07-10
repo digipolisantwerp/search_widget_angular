@@ -1,5 +1,6 @@
 {
   "extends": "../tsconfig.json",
+  "emitDecoratorMetadata": true,
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "baseUrl": "./",

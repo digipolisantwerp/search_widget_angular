@@ -3,6 +3,7 @@
         <aui-auto-complete
             remote="true"
             clearInvalid="true"
+            [value]="value"
             [placeholder]="placeholder"
             [loadingText]="loadingText"
             [noResultsText]="noResultsText"
@@ -11,7 +12,7 @@
             (search)="onSelect($event)"
             (select)="onSelect($event)">
         </aui-auto-complete>
-        <div class="aui-search-icon" [ngStyle]="{'background-color': '#' + colorSearch}" (click)="onSelect()">
+        <div class="aui-search-icon" (click)="onSelect()">
             <i class="fa fa-search"></i>
         </div>
     </div>

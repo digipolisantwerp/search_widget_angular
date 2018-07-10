@@ -1,5 +1,5 @@
 /* Colors */
-$green:  #018C95;
+$button:  #018C95;
 $white:  #fff;
 $grey:   #E5E5E6;
 
@@ -82,6 +82,7 @@ $grey:   #E5E5E6;
     }
 
     &-icon{
+        background-color: $button;
         padding: 1.1em;
         color: $white;
         cursor: pointer;

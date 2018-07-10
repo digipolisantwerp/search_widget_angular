@@ -14,8 +14,6 @@ import { SearchWidgetValue, SearchWidgetService } from '..';
 export class SearchWidgetComponent implements OnInit {
     /* (Api) Url to provide suggestions for a search */
     @Input() public url;
-    /* BackgroundColor of the icon search box */
-    @Input() public colorSearch: string = '018C95';
     /* List of suggestions provided by the url */
     @Input() public suggestions: SearchWidgetValue[] = [];
     /* Minimum characters before the search */
@@ -26,6 +24,8 @@ export class SearchWidgetComponent implements OnInit {
     @Input() public noResultsText: string = "Geen resultaten gevonden";
     /* Loading text */
     @Input() public loadingText: string = "Laden...";
+    /** the value that is displayed */
+    @Input() public value: SearchWidgetValue;
     /* Input placeholder text */
     @Input() public placeholder: string = "";
 
@@ -34,9 +34,11 @@ export class SearchWidgetComponent implements OnInit {
     public query = '';
     public text = '';
 
-    constructor(private searchWidgetService: SearchWidgetService) { }
+    constructor(public searchWidgetService: SearchWidgetService) { }
 
-    public ngOnInit(): void {
+    ngOnInit() {
+        this.resetSuggestions();
+
         Observable.create(observer => {
             this.searchChange$ = observer;
         }).debounceTime(300)
@@ -47,14 +49,23 @@ export class SearchWidgetComponent implements OnInit {
     }
 
     onSelect(evt = null){
-        if(!evt || evt.target){
-            return this.suggestions = []; // Key event instead of text
+        if(this.minCharacters >= evt.length){
+            return this.resetSuggestions(); // Less characters
         }
 
-        if(this.minCharacters >= evt.length){
-            return this.suggestions = []; // Less characters
+        if(!evt || evt.target){
+            return; // Key event instead of text
         }
             
         this.searchChange$.next(evt);
+    }
+
+    /** revert the search results to the current value of the control */
+    public resetSuggestions() {
+        this.suggestions = [];
+
+        if (this.value && !this.suggestions.length) {
+            this.suggestions = [this.value];
+        }
     }
 }

@@ -1,18 +1,18 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { ElementRef } from '@angular/core';
+
+import { SearchWidgetComponent, SearchWidgetService, SearchWidgetValue, SearchWidgetModule } from '..';
 import { Observable } from 'rxjs/Observable';
 
-import { SearchWidgetModule, SearchWidgetService , SearchWidgetValue, SearchWidgetComponent} from '..';
-
 describe('SearchWidgetComponent', () => {
+
     let fixture: ComponentFixture<SearchWidgetComponent>;
     let comp: SearchWidgetComponent;
     let element: any;
-    let testValues: Array<SearchWidgetValue> = [
-        { tag: "Aankoopsuggestie" }
-    ];
+    let testValues: SearchWidgetValue[] = [];
 
     class MockSearchWidgetService {
-        getSearchWidgetResults(dataSource: any, search: string) {
+        public getSearchWidgetResults(dataSource: any, search: string) {
             return Observable.of(testValues);
         }
     }
@@ -20,7 +20,7 @@ describe('SearchWidgetComponent', () => {
     const provideTestValues = (count: number = 1) => {
         testValues = [];
         for (let i = 0; i < count; i++) {
-            testValues.push({ tag: "Aankoopsuggestie" });
+            testValues.push({tag: 'string'});
         }
     };
 
@@ -30,8 +30,9 @@ describe('SearchWidgetComponent', () => {
             providers: [
                 { provide: SearchWidgetService, useClass: MockSearchWidgetService }
             ]
-        });
+        })
         provideTestValues(1);
+        console.log(testValues);
         fixture = TestBed.createComponent(SearchWidgetComponent);
         comp = fixture.componentInstance;
         element = fixture.nativeElement;
@@ -44,41 +45,8 @@ describe('SearchWidgetComponent', () => {
     });
 
 
-    it('should not query values for a short text', (done) => {
-        comp.minCharacters = 4;
-        comp.ngOnInit();
-        fixture.detectChanges();
-        const spy = spyOn(comp, 'doSearch');
-        const input = element.querySelector('input[type=text]');
-        input.value = 'foo';
-        input.dispatchEvent(new Event('input'));
-        fixture.detectChanges();
-        setTimeout(() => {
-            expect(spy).toHaveBeenCalled();
-            done();
-        }, 10);
-    });
-
-    it('should query values', (done) => {
-        provideTestValues(2);
-        comp.ngOnInit();
-        fixture.detectChanges();
-        const input = element.querySelector('input[type=text]');
-        input.value = 'Aankoop';
-        input.dispatchEvent(new Event('input'));
-        fixture.detectChanges();
-        setTimeout(() => {
-            expect(comp.results).not.toBeNull();
-            expect(comp.results.length).toEqual(0);
-            done();
-        }, 10);
-    });
-
-    it('should clear the search results on value clear', () => {
-        comp.value = testValues[0].tag;
-        comp.results = testValues;
-        fixture.detectChanges();
-        comp.writeValue(null);
-        expect(comp.results.length).toBe(0);
-    });
 });
+
+class MockElementRef extends ElementRef {
+    constructor() { super(null); }
+}
