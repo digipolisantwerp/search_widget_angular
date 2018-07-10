@@ -55,6 +55,7 @@ Supported attributes:
 - **loadingText**: Text when loading the results
 - **noResultsText**: Text when the results are empty
 - **colorSearch**: Add the color of the search button (default: '018C95' = green)
+- **value**: Start with a value
 
 ## Run the demo app
 
