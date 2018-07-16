@@ -47,15 +47,23 @@ In your template:
 
 
 Supported attributes:
+- **method**: POST or a GET method to get suggestions (default: GET)
+- **language**: Language of the query suggestions
 - **url**: (Api) Url to provide suggestions for a search
-- **placeholder**: Specify the text to show in an empty field (default: Search..)
+- **placeholder**: Specify the text to show in an empty field (default: empty)
 - **suggestions**: The results of the remote suggestions (default: string[])
 - **minCharacters**: Minimal characters to search in the results (default: 2)
 - **searchIncentiveText**: The message shown when the user focuses on the input field
 - **loadingText**: Text when loading the results
 - **noResultsText**: Text when the results are empty
 - **colorSearch**: Add the color of the search button (default: '018C95' = green)
-- **value**: Start with a value
+- **searchValue**: Start with a value
+- **label**: If SearchWidgetValue is an object add label to show
+- **query**: Value of the input
+- **limit**: A limit for suggestions
+
+Events:
+- **search**:  The event fired when the search is triggered
 
 ## Run the demo app
 

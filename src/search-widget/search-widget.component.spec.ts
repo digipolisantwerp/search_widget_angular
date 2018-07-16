@@ -20,7 +20,7 @@ describe('SearchWidgetComponent', () => {
     const provideTestValues = (count: number = 1) => {
         testValues = [];
         for (let i = 0; i < count; i++) {
-            testValues.push({tag: 'string'});
+            testValues.push({value: 'string'});
         }
     };
 
@@ -32,7 +32,6 @@ describe('SearchWidgetComponent', () => {
             ]
         })
         provideTestValues(1);
-        console.log(testValues);
         fixture = TestBed.createComponent(SearchWidgetComponent);
         comp = fixture.componentInstance;
         element = fixture.nativeElement;
@@ -45,6 +44,28 @@ describe('SearchWidgetComponent', () => {
     });
 
 
+    it('should select the text on focus()', (done) => {
+        comp.searchValue = testValues[0];
+        fixture.detectChanges();
+        const input = element.querySelector('input[type=text]');
+        input.select = () => { done(); };
+        comp.focus();
+    });
+
+    it('should not query values for a short text', (done) => {
+        comp.minCharacters = 4;
+        comp.ngOnInit();
+        fixture.detectChanges();
+        const spy = spyOn(comp, 'resetSuggestions');
+        const input = element.querySelector('input[type=text]');
+        input.value = 'foo';
+        input.dispatchEvent(new Event('input'));
+        fixture.detectChanges();
+        setTimeout(() => {
+            expect(spy).toHaveBeenCalled();
+            done();
+        }, 10);
+    });
 });
 
 class MockElementRef extends ElementRef {

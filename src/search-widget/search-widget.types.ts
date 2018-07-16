@@ -1,5 +1,5 @@
-
 export interface SearchWidgetValue {
-    tag: string;
+    value: string;
+    label?: string;
 }
 

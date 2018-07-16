@@ -3,16 +3,18 @@
         <aui-auto-complete
             remote="true"
             clearInvalid="true"
-            [value]="value"
+            [label]="label"
+            [ngModel]="searchValue?.value"
+            [minCharacters]="minCharacters"
             [placeholder]="placeholder"
             [loadingText]="loadingText"
             [noResultsText]="noResultsText"
             [searchIncentiveText]="searchIncentiveText"
             [results]="suggestions"
-            (search)="onSelect($event)"
-            (select)="onSelect($event)">
+            (select)="onSelect($event)"
+            (search)="onSearch($event)">
         </aui-auto-complete>
-        <div class="aui-search-icon" (click)="onSelect()">
+        <div class="aui-search-icon" (click)="onSelect(query)">
             <i class="fa fa-search"></i>
         </div>
     </div>

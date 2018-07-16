@@ -2,11 +2,11 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { SearchWidgetService, SearchWidgetValue } from '..';
-import { environment } from '../../config/environment';
+import { environment } from '../../config/environment'
 
 describe('SearchWidgetService', () => {
     const testValues: SearchWidgetValue[] = [
-        { tag: 'Aankoopsuggestie'}
+        { value: 'Aankoopsuggestie'}
     ]
 
     let service: SearchWidgetService;
@@ -26,12 +26,11 @@ describe('SearchWidgetService', () => {
     });
 
     it('should query values via http', (done) => {
-        service.getSearchWidgetResults(environment.url + 'suggestions.json').subscribe((res: any) => {
+        service.postSearchWidgetResults(environment.url, "Aankoopsuggestie").subscribe((res: any) => {
             expect(res).toEqual(testValues);
             done();
         });
-
-        const req = httpMock.expectOne(environment.url + 'suggestions.json');
+        const req = httpMock.expectOne(environment.url);
         req.flush(testValues);
     });
 });

@@ -11,7 +11,7 @@ const httpOptions = {
 @Injectable()
 export class SearchWidgetService {
     
-    constructor(private http: HttpClient) { }
+    constructor( private http: HttpClient ) { }
 
     /** GET getSearchWidgetResults */
     getSearchWidgetResults (
@@ -21,19 +21,39 @@ export class SearchWidgetService {
          */
         dataSource: string, 
         /** The string to search for */
-        search: string = null) {
+        search: string = null): Observable<any>{
         if (typeof dataSource === 'string') {
-            const uri = dataSource +
-                ((dataSource.indexOf('?') < 0) ? '?' : '&') +
-                'search=' + search;
-                // TEMP: dataSource instead of uri => MockData
-                return this.http.get<Observable<SearchWidgetValue[]>>(dataSource, httpOptions).pipe(
-                    tap(data => data),
-                    catchError(this.handleError('getSearchWidgetResults', []))
-                );
+            const uri = dataSource +  ((dataSource.indexOf('?') < 0) ? '?' : '&') + `search=${search}`;
+                return this.http.get<Observable<SearchWidgetValue[]>>(uri, httpOptions)
+                                .pipe(
+                                    tap(data => data),
+                                    catchError(this.handleError('getSearchWidgetResults', []))
+                                );
             } else {
             // should never happen
-            throw new TypeError('unsupported dataSource type "' + (typeof dataSource) + '"');
+            throw new TypeError('Unsupported dataSource type "' + (typeof dataSource) + '"');
+        }
+    }
+
+    /** POST getSearchWidgetResults */
+    postSearchWidgetResults (
+        /**
+         * The URL for contacting the BFF
+         */
+        dataSource: string, 
+        /** The body which contains the query and the language */
+        body) : Observable<any>{
+        if (typeof dataSource === 'string') {
+            const uri = dataSource +
+                ((dataSource.indexOf('?') < 0) ? '?' : '&');
+                return this.http.post<Observable<SearchWidgetValue[]>>(dataSource, JSON.stringify(body), httpOptions)
+                                .pipe(
+                                    tap(data => data),
+                                    catchError(this.handleError('getSearchWidgetResults', []))
+                                );
+            } else {
+            // should never happen
+            throw new TypeError('Unsupported dataSource type "' + (typeof dataSource) + '"');
         }
     }
 

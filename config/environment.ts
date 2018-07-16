@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  url: 'https://smart-widget-dgp.firebaseapp.com/'
+  url: 'http://localhost:3000/suggest'
 };
