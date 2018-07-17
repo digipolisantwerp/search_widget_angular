@@ -19,20 +19,18 @@ export class SearchWidgetComponent implements OnInit {
     @Input() public language: string = 'NL';
     /* (Api) Url to provide suggestions for a search */
     @Input() public url: string = '';
+    /** The value of the search */
+    @Input() public searchValue: SearchWidgetValue;
     /* List of suggestions provided by the url */
     @Input() public suggestions: SearchWidgetValue[];
     /* Minimum characters before the search */
     @Input() public minCharacters: number = 2;
-    /* Search incentive text */
-    @Input() public searchIncentiveText: string = "Geen resultaten gevonden";
+     /* Search incentive text */
+     @Input() public searchIncentiveText: string = "Vind je vraag hier";
     /* No results text */
     @Input() public noResultsText: string = "Geen resultaten gevonden";
     /* Loading text */
-    @Input() public loadingText: string = "Laden...";
-    /* Input placeholder text */
-    @Input() public placeholder: string = ""
-    /** the value that of the user input */
-    @Input() public searchValue: SearchWidgetValue;
+    @Input() public loadingText: string = "";
     /** If SearchWidgetValue is an object add label to show  */
     @Input() public label: string = '';
     /** SearchResult */
@@ -111,10 +109,5 @@ export class SearchWidgetComponent implements OnInit {
 
     public resetSuggestions(): void {
         this.suggestions = [];
-        // if an initial value is set, focusing+blurring the field
-        // should not clear the field
-        if (this.searchValue && !this.suggestions.length) {
-            this.suggestions = [this.searchValue];
-        }
     }
 }

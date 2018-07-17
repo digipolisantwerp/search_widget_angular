@@ -51,19 +51,32 @@ Supported attributes:
 - **language**: Language of the query suggestions
 - **url**: (Api) Url to provide suggestions for a search
 - **placeholder**: Specify the text to show in an empty field (default: empty)
-- **suggestions**: The results of the remote suggestions (default: string[])
-- **minCharacters**: Minimal characters to search in the results (default: 2)
+- **searchValue**: The results comes in an array with type SearchWidgetValue
+- **suggestions**: The full results array of the remote suggestions (default: string[])
 - **searchIncentiveText**: The message shown when the user focuses on the input field
-- **loadingText**: Text when loading the results
+- **minCharacters**: Minimal characters to search in the results (default: 2)
 - **noResultsText**: Text when the results are empty
-- **colorSearch**: Add the color of the search button (default: '018C95' = green)
-- **searchValue**: Start with a value
+- **loadingText**: Text when loading the results
 - **label**: If SearchWidgetValue is an object add label to show
-- **query**: Value of the input
-- **limit**: A limit for suggestions
+- **query**: This is the value of the searchwidget
+- **limit**: Give a limit for suggestions per page
 
 Events:
 - **search**:  The event fired when the search is triggered
+
+The backing service implements the following protocol:
+
+- POST /path/to/endpoint with raw body object:
+- **query***: the value of search
+- **language***: the language of the search
+Example: 
+```json
+  {
+    "query":"Aank",
+    "language":"NL" 
+  }
+```
+- suggestions = JSON-encoded array of [SearchWidgetValue](src/search-widget/search-widget.types.ts) objects
 
 ## Run the demo app
 
