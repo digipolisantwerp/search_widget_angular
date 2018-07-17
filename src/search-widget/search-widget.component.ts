@@ -74,7 +74,6 @@ export class SearchWidgetComponent implements OnInit {
                   return this.searchWidgetService.getSearchWidgetResults(this.url, this.searchValue.value);
               }else if(this.method === 'POST'){
                 return this.searchWidgetService.postSearchWidgetResults(this.url, { 
-                    authkey: "7EB69838A528D67EAE7341789541F", 
                     query: this.query, 
                     language: this.language
                 });
