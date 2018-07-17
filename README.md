@@ -61,14 +61,16 @@ Supported attributes:
 - **query**: This is the value of the searchwidget
 - **limit**: Give a limit for suggestions per page
 
+
 Events:
 - **search**:  The event fired when the search is triggered
+
 
 The backing service implements the following protocol:
 
 - POST /path/to/endpoint with raw body object:
-- **query***: the value of search
-- **language***: the language of the search
+- **query**: the value of search
+- **language**: the language of the search
 Example: 
 ```json
   {
