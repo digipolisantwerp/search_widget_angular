@@ -71,16 +71,16 @@ export class SearchWidgetComponent implements OnInit {
         }
     }
 
-    initValue(string){
+    initValue(value: string){
         if(this.searchValue && this.searchValue.value){
-            this.searchValue.value = string;
+            this.searchValue.value = value;
         }else{
             this.searchValue = {
-                value: string
+                value: value
             }
         }
         this.cdRef.detectChanges();
-        this.onSearch(string);
+        this.onSearch(value);
     }
 
     ngOnInit() {
