@@ -2,6 +2,7 @@
 $button:  #018C95;
 $white:  #fff;
 $grey:   #E5E5E6;
+$black:  #000000;
 
 /* Element aui-search */
 :host{
@@ -103,6 +104,7 @@ aui-auto-complete{
             width: 100%;
             padding: 1.05rem 1.5rem;
             border-radius: 0;
+            color: $black;
         }   
     }
 }

@@ -1,4 +1,12 @@
-import { Component, Input, OnInit, ViewEncapsulation, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, 
+    Input, 
+    OnInit, 
+    ViewEncapsulation, 
+    Output, 
+    EventEmitter, 
+    ViewChild, 
+    ElementRef, 
+    ChangeDetectorRef } from '@angular/core';
 import { Observer, Observable } from 'rxjs';
 
 import { SearchWidgetValue } from './search-widget.types';
@@ -20,7 +28,7 @@ export class SearchWidgetComponent implements OnInit {
     /* (Api) Url to provide suggestions for a search */
     @Input() public url: string = '';
     /** The value of the search */
-    @Input() public searchValue: SearchWidgetValue;
+    @Input() public searchValue: SearchWidgetValue = {value: ''};
     /* List of suggestions provided by the url */
     @Input() public suggestions: SearchWidgetValue[];
     /* Minimum characters before the search */
@@ -48,22 +56,36 @@ export class SearchWidgetComponent implements OnInit {
 
     constructor(
         private searchWidgetService: SearchWidgetService,
-        private element: ElementRef
+        private element: ElementRef,
+        private cdRef:ChangeDetectorRef
     ) { }
 
     /** Set the focus in the text field, selecting all text. */
     public focus(): void {
         const nativeEl = this.element.nativeElement;
         if (nativeEl && nativeEl.querySelector) {
-            const input = nativeEl.querySelector('#tryout');
+            const input = nativeEl.querySelector('input[type="text"]');
             if (input) {
                 input.select();
             }
         }
     }
 
+    initValue(string){
+        if(this.searchValue && this.searchValue.value){
+            this.searchValue.value = string;
+        }else{
+            this.searchValue = {
+                value: string
+            }
+        }
+        this.cdRef.detectChanges();
+        this.onSearch(string);
+    }
+
     ngOnInit() {
         this.resetSuggestions();
+        // this.autocomplete.doSearch();
         Observable.create(observer => {
             this.searchChange$ = observer;
         }).debounceTime(300)
