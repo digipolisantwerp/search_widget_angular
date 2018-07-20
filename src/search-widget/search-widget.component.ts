@@ -53,6 +53,7 @@ export class SearchWidgetComponent implements OnInit {
     @ViewChild(AutoCompleteComponent) public autocomplete: AutoCompleteComponent;
 
     private searchChange$: Observer<string>;
+    public iconLeft: boolean = false;
 
     constructor(
         private searchWidgetService: SearchWidgetService,
@@ -122,6 +123,7 @@ export class SearchWidgetComponent implements OnInit {
             // do nothing: we don't respond to text selection events
         } else if(data) {
             this.search.emit(data);
+            this.query = data;
         }else if(!data && this.query){
             if (this.query.length >= this.minCharacters) {
                 this.search.emit(this.query);

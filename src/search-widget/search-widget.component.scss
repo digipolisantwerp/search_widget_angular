@@ -80,6 +80,10 @@ $black:  #000000;
         display: flex;
         align-items: center;
         width: 100%;
+
+        &-reverse{
+            flex-direction: row-reverse;
+        }
     }
 
     &-icon{
