@@ -88,7 +88,7 @@ $black:  #000000;
 
     &-icon{
         background-color: $button;
-        padding: 1.1em;
+        padding: .55em;
         color: $white;
         cursor: pointer;
     }
@@ -106,7 +106,7 @@ aui-auto-complete{
             appearance: none;
             border: 0;
             width: 100%;
-            padding: 1.05rem 1.5rem;
+            padding: .55rem .85rem;
             border-radius: 0;
             color: $black;
         }   

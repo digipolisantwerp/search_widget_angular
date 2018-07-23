@@ -85,8 +85,8 @@ export class SearchWidgetComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.focus();
         this.resetSuggestions();
-        // this.autocomplete.doSearch();
         Observable.create(observer => {
             this.searchChange$ = observer;
         }).debounceTime(300)
@@ -104,9 +104,6 @@ export class SearchWidgetComponent implements OnInit {
           })
           .subscribe(suggestions => {
             this.suggestions = suggestions.terms;
-            if(this.query){
-                this.autocomplete.writeValue(this.query);
-            }   
         });
     }
 

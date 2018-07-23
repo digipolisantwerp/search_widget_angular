@@ -2,7 +2,6 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { SearchWidgetService, SearchWidgetValue } from '..';
-import { environment } from '../../config/environment'
 
 describe('SearchWidgetService', () => {
     const testValues: SearchWidgetValue[] = [
@@ -26,11 +25,11 @@ describe('SearchWidgetService', () => {
     });
 
     it('should query values via http', (done) => {
-        service.postSearchWidgetResults(environment.url, "Aankoopsuggestie").subscribe((res: any) => {
+        service.postSearchWidgetResults('', "Aankoopsuggestie").subscribe((res: any) => {
             expect(res).toEqual(testValues);
             done();
         });
-        const req = httpMock.expectOne(environment.url);
+        const req = httpMock.expectOne('');
         req.flush(testValues);
     });
 });

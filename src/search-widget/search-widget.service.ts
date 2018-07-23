@@ -49,7 +49,11 @@ export class SearchWidgetService {
                 return this.http.post<Observable<SearchWidgetValue[]>>(dataSource, JSON.stringify(body), httpOptions)
                                 .pipe(
                                     tap(data => data),
-                                    catchError(this.handleError('getSearchWidgetResults', []))
+                                    catchError((err) => {
+                                        console.error("Look at this error:", err);
+                                        this.handleError('getSearchWidgetResults', [])
+                                        return Observable.empty();
+                                    })
                                 );
             } else {
             // should never happen
@@ -65,7 +69,6 @@ export class SearchWidgetService {
      */
     private handleError<T> (operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
-        console.error(error); // log to console instead
         this.log(`${operation} failed: ${error.message}`);
     
         // Let the app keep running by returning an empty result.
