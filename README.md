@@ -80,6 +80,23 @@ Example:
 ```
 - suggestions = JSON-encoded array of [SearchWidgetValue](src/search-widget/search-widget.types.ts) objects
 
+
+
+- Changing the color of the searchbox:
+```css
+.aui-search .aui-search-icon{
+    background-color: $green;
+} 
+```
+- To place the icon on the other side of the search-bar:
+```javascript
+/** the autocomplete component */
+@ViewChild(SearchWidgetComponent) public searchWidget: SearchWidgetComponent;
+
+this.searchWidget.iconLeft = true;
+```
+
+
 ## Run the demo app
 
 Set up the .npmrc (see above), then run:
