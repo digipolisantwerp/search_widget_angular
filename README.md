@@ -2,7 +2,7 @@
 
 This is the Angular 5+ UI for a Smart Widget implementing a search bar with suggestions. It is matched by a corresponding back-end service which is needed when running it in remote mode.
 
-Link to bff: coming..
+Link to bff: https://bitbucket.antwerpen.be/projects/ASA/repos/search_api_nodejs/browse
 
 ![screenshot](example.png)
 
