@@ -60,7 +60,7 @@ Supported attributes:
 - **label**: If SearchWidgetValue is an object add label to show
 - **query**: This is the value of the searchwidget
 - **limit**: Give a limit for suggestions per page
-- **iconLeft**: Change location of searchbox (default: false)
+- **iconLeft**: Change the location of searchbox (default: false)
 
 Events:
 - **search**:  The event fired when the search is triggered
