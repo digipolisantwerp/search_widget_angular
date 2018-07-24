@@ -79,6 +79,11 @@
 
         &-reverse{
             flex-direction: row-reverse;
+
+            .m-flyout.is-open{
+                border: 1px solid $border-color;
+                border-left: 0;
+            }
         }
     }
 
@@ -121,14 +126,16 @@ aui-auto-complete{
     &.is-open{
         border: 1px solid $border-color;
         border-right: 0;
-
         
         .aui-auto-complete__info{
             padding: 1em;
         }
 
         .m-flyout__content {
-            border: 1px solid $border-color;
+            border-left: 1px solid $border-color;
+            border-right: 1px solid $border-color;
+            border-bottom: 1px solid $border-color;
+            margin-top: 1px;
         }
     }
 

@@ -60,7 +60,7 @@ Supported attributes:
 - **label**: If SearchWidgetValue is an object add label to show
 - **query**: This is the value of the searchwidget
 - **limit**: Give a limit for suggestions per page
-
+- **iconLeft**: Change location of searchbox (default: false)
 
 Events:
 - **search**:  The event fired when the search is triggered
@@ -81,7 +81,7 @@ Example:
 - suggestions = JSON-encoded array of [SearchWidgetValue](src/search-widget/search-widget.types.ts) objects
 
 
-Edit examples:
+CSS examples:
 
 ```css
 /* Changing the color of the searchbox: */
@@ -89,14 +89,6 @@ Edit examples:
     background-color: $green;
 } 
 ```
-
-```javascript
-// To place the icon on the other side of the search-bar:
-@ViewChild(SearchWidgetComponent) public searchWidget: SearchWidgetComponent;
-
-this.searchWidget.iconLeft = true;
-```
-
 
 ## Run the demo app
 

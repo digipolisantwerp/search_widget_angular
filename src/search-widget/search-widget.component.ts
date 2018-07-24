@@ -45,6 +45,8 @@ export class SearchWidgetComponent implements OnInit {
     @Input() public query: string = '';
     /** A limit for suggestions */
     @Input() public limit: string = '';
+    /** Change location of searchbox */
+    @Input() public iconLeft: boolean = false;
 
     /** the event fired when the search is triggered */
     @Output() public search: EventEmitter<any> = new EventEmitter<any>();
@@ -53,7 +55,6 @@ export class SearchWidgetComponent implements OnInit {
     @ViewChild(AutoCompleteComponent) public autocomplete: AutoCompleteComponent;
 
     private searchChange$: Observer<string>;
-    public iconLeft: boolean = false;
     public id: string = "search";
 
     constructor(
