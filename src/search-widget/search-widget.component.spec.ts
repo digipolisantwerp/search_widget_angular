@@ -1,11 +1,12 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { ElementRef } from '@angular/core';
 
 import { SearchWidgetComponent, SearchWidgetService, SearchWidgetValue, SearchWidgetModule } from '..';
 import { Observable } from 'rxjs/Observable';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '../../node_modules/@angular/core';
 
 describe('SearchWidgetComponent', () => {
-
+    let debugElement: DebugElement;
     let fixture: ComponentFixture<SearchWidgetComponent>;
     let comp: SearchWidgetComponent;
     let element: any;
@@ -33,6 +34,8 @@ describe('SearchWidgetComponent', () => {
         })
         provideTestValues(1);
         fixture = TestBed.createComponent(SearchWidgetComponent);
+        debugElement = fixture.debugElement;
+
         comp = fixture.componentInstance;
         element = fixture.nativeElement;
     });
@@ -42,7 +45,6 @@ describe('SearchWidgetComponent', () => {
             document.body.removeChild(element);
         }
     });
-
 
     it('should select the text on focus()', (done) => {
         comp.searchValue = testValues[0];
@@ -56,7 +58,7 @@ describe('SearchWidgetComponent', () => {
         comp.minCharacters = 4;
         comp.ngOnInit();
         fixture.detectChanges();
-        const spy = spyOn(comp, 'resetSuggestions');
+        const spy = spyOn(comp, 'onSearch');
         const input = element.querySelector('input[type=text]');
         input.value = 'foo';
         input.dispatchEvent(new Event('input'));
@@ -66,8 +68,21 @@ describe('SearchWidgetComponent', () => {
             done();
         }, 10);
     });
-});
 
-class MockElementRef extends ElementRef {
-    constructor() { super(null); }
-}
+    it('Selecting a suggestion emits search', (done) => {
+        comp.ngOnInit();
+        comp.search.subscribe((object) => {
+            expect(object).toEqual({value: 'test'});
+            done();
+        });
+        comp.onSelect({value: 'test'});
+        fixture.detectChanges();
+    });
+
+    it('Selecting text calls onSelect', (done) => {
+        spyOn(comp, 'onSelect');
+        element = debugElement.query(By.css('.aui-search-icon')).nativeElement.click();
+        expect(comp.onSelect).toHaveBeenCalled();
+        done();
+    });
+});

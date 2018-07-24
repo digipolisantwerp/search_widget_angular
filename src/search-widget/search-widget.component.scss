@@ -1,8 +1,4 @@
-/* Colors */
-$button:  #018C95;
-$white:  #fff;
-$grey:   #E5E5E6;
-$black:  #000000;
+@import "~@a-ui/core/dist/assets/styles/_quarks";
 
 /* Element aui-search */
 :host{
@@ -12,7 +8,7 @@ $black:  #000000;
     z-index: 2;
     display: block;
     
-    @media (min-width: 786px){
+    @include at(786px){
         flex-direction: row;
         width: 80%;
     }
@@ -27,7 +23,7 @@ $black:  #000000;
         align-items: center;
         flex-direction: column;
 
-        @media (min-width: 786px){
+        @include at(786px){
             flex-direction: row;
         }
     }
@@ -38,7 +34,7 @@ $black:  #000000;
 
     &.expand{
         flex-direction: column;
-        @media (min-width: 786px){
+        @include at(786px){
             width: 80%;
         }
 
@@ -47,7 +43,7 @@ $black:  #000000;
             margin: 0 auto;
             flex-direction: column;
 
-            @media (min-width: 786px){
+            @include at(786px){
                 width: 60%;
             }
         }
@@ -57,7 +53,7 @@ $black:  #000000;
             width: 100%;
             font-family: 'Antwerpen Regular';
 
-            @media (min-width: 786px){
+            @include at(786px){
                 flex-direction: column;
                 padding-bottom: .5em;
             }
@@ -69,7 +65,7 @@ $black:  #000000;
         margin-bottom: 1em;
         width: 100%;
 
-        @media (min-width: 786px){
+        @include at(786px){
             padding-left: 0.5em;
             margin-bottom: 0;
             font-size: 1.6rem;
@@ -87,8 +83,8 @@ $black:  #000000;
     }
 
     &-icon{
-        background-color: $button;
-        padding: .55em;
+        background-color: $brand-primary;
+        padding: .65em;
         color: $white;
         cursor: pointer;
     }
@@ -99,7 +95,7 @@ $black:  #000000;
 aui-auto-complete{
     width: 100%;
 
-    .aui-auto-complete {
+    .aui-auto-complete{
         padding: 0;
 
         input{
@@ -123,7 +119,7 @@ aui-auto-complete{
     }
     
     &.is-open{
-        border: 1px solid #B0B0B0;
+        border: 1px solid $border-color;
         border-right: 0;
 
         
@@ -132,7 +128,7 @@ aui-auto-complete{
         }
 
         .m-flyout__content {
-            border: 1px solid #b0b0b0;
+            border: 1px solid $border-color;
         }
     }
 
