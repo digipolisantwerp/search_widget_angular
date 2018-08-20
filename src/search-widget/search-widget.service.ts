@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { empty } from 'rxjs/observable/empty';
 import { catchError, tap } from 'rxjs/operators';
 import { SearchWidgetValue } from '..';
 
@@ -51,7 +53,7 @@ export class SearchWidgetService {
                                     catchError((err) => {
                                         console.error('Look at this error:', err);
                                         this.handleError('getSearchWidgetResults', []);
-                                        return Observable.empty();
+                                        return empty();
                                     })
                                 );
             } else {
@@ -71,7 +73,7 @@ export class SearchWidgetService {
         this.log(`${operation} failed: ${error.message}`);
 
         // Let the app keep running by returning an empty result.
-        return Observable.of(result as T);
+        return of(result as T);
         };
     }
 

@@ -1,9 +1,9 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 
 import { SearchWidgetComponent, SearchWidgetService, SearchWidgetValue, SearchWidgetModule } from '..';
-import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '../../node_modules/@angular/core';
+import { DebugElement } from '@angular/core';
 
 describe('SearchWidgetComponent', () => {
     let debugElement: DebugElement;
@@ -14,7 +14,7 @@ describe('SearchWidgetComponent', () => {
 
     class MockSearchWidgetService {
         public getSearchWidgetResults(dataSource: any, search: string) {
-            return Observable.of(testValues);
+            return of(testValues);
         }
     }
 
@@ -32,12 +32,27 @@ describe('SearchWidgetComponent', () => {
                 { provide: SearchWidgetService, useClass: MockSearchWidgetService }
             ]
         });
+
         provideTestValues(1);
         fixture = TestBed.createComponent(SearchWidgetComponent);
         debugElement = fixture.debugElement;
 
         comp = fixture.componentInstance;
+        comp.method = 'GET';
+        comp.language = 'NL';
+        comp.url = '';
+        comp.searchValue = {value: ''};
+        comp.suggestions = [];
+        comp.minCharacters = 2;
+        comp.searchIncentiveText = 'Vind je vraag hier';
+        comp.noResultsText = 'Geen resultaten gevonden';
+        comp.loadingText = '';
+        comp.label = '';
+        comp.query = '';
+        comp.limit = '';
+        comp.iconLeft = false;
         element = fixture.nativeElement;
+        fixture.detectChanges();
     });
 
     afterEach(() => {

@@ -9,6 +9,9 @@ import { Component,
     ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
+import { of } from 'rxjs/observable/of';
+import { debounceTime } from 'rxjs/operators/debounceTime';
+import { mergeMap } from 'rxjs/operators/mergeMap';
 
 import { SearchWidgetValue } from './search-widget.types';
 import { SearchWidgetService } from './search-widget.service';
@@ -90,28 +93,28 @@ export class SearchWidgetComponent implements OnInit {
         this.subscribeOpenFlyout();
         Observable
             .create(observer => { this.searchChange$ = observer; })
-            .debounceTime(300)
-            .mergeMap(() => {
-                if (this.query && (this.query.length > this.minCharacters)) {
-                    if (this.method === 'GET') {
-                        return this.searchWidgetService.getSearchWidgetResults(this.url, this.query);
-                    } else if (this.method === 'POST') {
-                        return this.searchWidgetService.postSearchWidgetResults(this.url, {
-                            query: this.query,
-                            language: this.language
-                        });
+            .pipe(
+                debounceTime(300),
+                mergeMap(() => {
+                    if (this.query && (this.query.length > this.minCharacters)) {
+                        if (this.method === 'GET') {
+                            return this.searchWidgetService.getSearchWidgetResults(this.url, this.query);
+                        } else if (this.method === 'POST') {
+                            return this.searchWidgetService.postSearchWidgetResults(this.url, {
+                                query: this.query,
+                                language: this.language
+                            });
+                        } else {
+                            console.error('Unsupported method on API: ', this.method);
+                        }
                     } else {
-                        console.error('Unsupported method on API: ', this.method);
+                        // If debouncetime is >100, the user is faster then the debouncetime
+                        // API-call will take the last item in the observer which can be
+                        // smaller then the minCharacters
+                        return of(null);
                     }
-                } else {
-                    // If debouncetime is >100, the user is faster then the debouncetime
-                    // API-call will take the last item in the observer which can be
-                    // smaller then the minCharacters
-                    return Observable.of(null);
-                }
-
-            })
-            .subscribe(suggestions => {
+                })
+            ).subscribe(suggestions => {
                 if (suggestions) {
                     this.suggestions = suggestions.terms;
                 }
