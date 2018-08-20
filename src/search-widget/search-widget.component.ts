@@ -1,13 +1,14 @@
-import { Component, 
-    Input, 
-    OnInit, 
-    ViewEncapsulation, 
-    Output, 
-    EventEmitter, 
-    ViewChild, 
-    ElementRef, 
-    ChangeDetectorRef} from '@angular/core';
-import { Observer, Observable } from 'rxjs';
+import { Component,
+    Input,
+    OnInit,
+    ViewEncapsulation,
+    Output,
+    EventEmitter,
+    ViewChild,
+    ElementRef,
+    ChangeDetectorRef } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
 import { SearchWidgetValue } from './search-widget.types';
 import { SearchWidgetService } from './search-widget.service';
@@ -22,31 +23,31 @@ import { AutoCompleteComponent } from '@acpaas-ui/auto-complete';
 
 export class SearchWidgetComponent implements OnInit {
     /* POST or a GET method to get suggestions */
-    @Input() public method: string = 'GET';
+    @Input() public method = 'GET';
     /* Language of the query suggestions */
-    @Input() public language: string = 'NL';
+    @Input() public language = 'NL';
     /* (Api) Url to provide suggestions for a search */
-    @Input() public url: string = '';
+    @Input() public url = '';
     /** The value of the search */
     @Input() public searchValue: SearchWidgetValue = {value: ''};
     /* List of suggestions provided by the url */
     @Input() public suggestions: SearchWidgetValue[];
     /* Minimum characters before the search */
-    @Input() public minCharacters: number = 2;
+    @Input() public minCharacters = 2;
      /* Search incentive text */
-     @Input() public searchIncentiveText: string = "Vind je vraag hier";
+     @Input() public searchIncentiveText = 'Vind je vraag hier';
     /* No results text */
-    @Input() public noResultsText: string = "Geen resultaten gevonden";
+    @Input() public noResultsText = 'Geen resultaten gevonden';
     /* Loading text */
-    @Input() public loadingText: string = "";
+    @Input() public loadingText = '';
     /** If SearchWidgetValue is an object add label to show  */
-    @Input() public label: string = '';
+    @Input() public label = '';
     /** SearchResult */
-    @Input() public query: string = '';
+    @Input() public query = '';
     /** A limit for suggestions */
-    @Input() public limit: string = '';
+    @Input() public limit = '';
     /** Change location of searchbox */
-    @Input() public iconLeft: boolean = false;
+    @Input() public iconLeft = false;
 
     /** the event fired when the search is triggered */
     @Output() public search: EventEmitter<any> = new EventEmitter<any>();
@@ -55,12 +56,12 @@ export class SearchWidgetComponent implements OnInit {
     @ViewChild(AutoCompleteComponent) public autocomplete: AutoCompleteComponent;
 
     private searchChange$: Observer<string>;
-    public id: string = "search";
+    public id = 'search';
 
     constructor(
         private searchWidgetService: SearchWidgetService,
         private element: ElementRef,
-        private cdRef:ChangeDetectorRef) { }
+        private cdRef: ChangeDetectorRef) { }
 
     /** Set the focus in the text field, selecting all text. */
     public focus(): void {
@@ -73,10 +74,10 @@ export class SearchWidgetComponent implements OnInit {
         }
     }
 
-    initValue(value: string): void{
-        if(this.searchValue && this.searchValue.value){
+    initValue(value: string): void {
+        if (this.searchValue && this.searchValue.value) {
             this.searchValue.value = value;
-        }else{
+        }else {
             this.searchValue = { value: value };
         }
         this.cdRef.detectChanges();
@@ -88,21 +89,21 @@ export class SearchWidgetComponent implements OnInit {
         this.resetSuggestions();
         this.subscribeOpenFlyout();
         Observable
-            .create(observer => { this.searchChange$ = observer })
+            .create(observer => { this.searchChange$ = observer; })
             .debounceTime(300)
             .mergeMap(() => {
-                if(this.query && (this.query.length > this.minCharacters)){
-                    if(this.method === 'GET'){
+                if (this.query && (this.query.length > this.minCharacters)) {
+                    if (this.method === 'GET') {
                         return this.searchWidgetService.getSearchWidgetResults(this.url, this.query);
-                    }else if(this.method === 'POST'){
-                        return this.searchWidgetService.postSearchWidgetResults(this.url, { 
-                            query: this.query, 
+                    } else if (this.method === 'POST') {
+                        return this.searchWidgetService.postSearchWidgetResults(this.url, {
+                            query: this.query,
                             language: this.language
                         });
-                    }else{
+                    } else {
                         console.error('Unsupported method on API: ', this.method);
                     }
-                }else{
+                } else {
                     // If debouncetime is >100, the user is faster then the debouncetime
                     // API-call will take the last item in the observer which can be
                     // smaller then the minCharacters
@@ -111,38 +112,37 @@ export class SearchWidgetComponent implements OnInit {
 
             })
             .subscribe(suggestions => {
-                if(suggestions){
+                if (suggestions) {
                     this.suggestions = suggestions.terms;
                 }
             });
     }
 
-    public subscribeOpenFlyout(): void{
+    public subscribeOpenFlyout(): void {
         this.autocomplete.flyout.opened.subscribe((x) => {
-            if(this.query.length <= this.minCharacters){
+            if (this.query.length <= this.minCharacters) {
                 this.autocomplete.flyout.close();
             }
-        })
+        });
     }
 
     public onSearch(searchString: string): void {
         if (searchString.length > this.minCharacters) {
             this.searchChange$.next(searchString);
-        }else{
+        } else {
             this.autocomplete.flyout.close();
         }
         this.resetSuggestions();
         this.query = searchString;
     }
 
-    
     public onSelect(data: Event | any): void {
         if (data instanceof Event) {
             // do nothing: we don't respond to text selection events
-        } else if(data) {
--            this.search.emit(data);
+        } else if (data) {
+            this.search.emit(data);
             this.query = data;
-        }else if(!data && this.query){
+        }else if (!data && this.query) {
             if (this.query.length > this.minCharacters) {
                 this.search.emit(this.query);
             }

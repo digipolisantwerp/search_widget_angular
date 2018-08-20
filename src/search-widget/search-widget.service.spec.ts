@@ -7,7 +7,7 @@ import { environment } from '../../config/environment.prod';
 describe('SearchWidgetService', () => {
     const testValues: SearchWidgetValue[] = [
         { value: 'Aankoopsuggestie'}
-    ]
+    ];
 
     let service: SearchWidgetService;
     let httpMock: HttpTestingController;
@@ -26,7 +26,7 @@ describe('SearchWidgetService', () => {
     });
 
     it('should query values via post http', (done) => {
-        service.postSearchWidgetResults(environment.url, "Aankoopsuggestie").subscribe((res: any) => {
+        service.postSearchWidgetResults(environment.url, 'Aankoopsuggestie').subscribe((res: any) => {
             expect(res).toEqual(testValues);
             done();
         });

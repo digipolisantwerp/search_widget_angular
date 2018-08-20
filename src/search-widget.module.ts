@@ -8,11 +8,11 @@ import { SearchWidgetComponent } from './search-widget/search-widget.component';
 import { SearchWidgetService } from './search-widget/search-widget.service';
 
 @NgModule({
-  imports: [ 
-    CommonModule, 
-    FormsModule, 
-    AutoCompleteModule, 
-    HttpClientModule 
+  imports: [
+    CommonModule,
+    FormsModule,
+    AutoCompleteModule,
+    HttpClientModule
   ],
   declarations: [ SearchWidgetComponent ],
   providers: [ SearchWidgetService ],

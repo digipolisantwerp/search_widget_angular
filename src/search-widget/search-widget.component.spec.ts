@@ -31,7 +31,7 @@ describe('SearchWidgetComponent', () => {
             providers: [
                 { provide: SearchWidgetService, useClass: MockSearchWidgetService }
             ]
-        })
+        });
         provideTestValues(1);
         fixture = TestBed.createComponent(SearchWidgetComponent);
         debugElement = fixture.debugElement;
