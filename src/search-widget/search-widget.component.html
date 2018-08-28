@@ -1,18 +1,22 @@
-<div class="aui-search">
-    <div class="aui-search-box" [class.aui-search-box-reverse]="iconLeft">
-        <aui-auto-complete
-            remote="true"
-            placeholder=" "
-            [id]="id"
-            [ngModel]="searchValue?.value"
-            [minCharacters]="minCharacters"
-            [loadingText]="loadingText"
-            [noResultsText]="noResultsText"
-            [results]="suggestions"
-            (select)="onSelect($event)"
-            (search)="onSearch($event)">
-        </aui-auto-complete>
-        <div class="aui-search-icon" (click)="onSelect(query)">
+<div class="m-search">
+    <div class="m-search__box" [class.m-search__box--reverse]="iconLeft">
+        <div class="a-input m-search__box__bar">
+            <div class="a-input__wrapper">
+                <aui-auto-complete
+                    remote="true"
+                    placeholder=" "
+                    [id]="id"
+                    [ngModel]="searchValue?.value"
+                    [minCharacters]="minCharacters"
+                    [loadingText]="loadingText"
+                    [noResultsText]="noResultsText"
+                    [results]="suggestions"
+                    (select)="onSelect($event)"
+                    (search)="onSearch($event)">
+                </aui-auto-complete>
+            </div>
+        </div>
+        <div class="m-search__box__icon" (click)="onSelect(query)">
             <i class="fa fa-search"></i>
         </div>
     </div>

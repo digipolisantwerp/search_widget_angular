@@ -1,6 +1,7 @@
-@import "~@a-ui/core/dist/assets/styles/_quarks";
 
-/* Element aui-search */
+@import "~@a-ui/core/dist/assets/styles/quarks/_quarks.colors.scss";
+
+/* Element m-search */
 :host{
     position: relative;
     width: 100%;
@@ -8,140 +9,77 @@
     z-index: 2;
     display: block;
     
-    @include at(786px){
+    @media (min-width: 786px){
         flex-direction: row;
         width: 80%;
     }
 }
 
-/* class aui-search */
-.aui-search{
-    &-top{
-        width: 100%;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
+/* class m-search__box */
+.m-search__box{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
 
-        @include at(786px){
-            flex-direction: row;
-        }
-    }
+    &--reverse{
+        flex-direction: row-reverse;
+        align-items: flex-start;
 
-    &-bar{
-        width: 100%;
-    }
-
-    &.expand{
-        flex-direction: column;
-        @include at(786px){
-            width: 80%;
+        /deep/ .m-flyout__content{
+            margin-left: -1px;
         }
 
-        .aui-search-top{
-            width: 100%;
-            margin: 0 auto;
-            flex-direction: column;
-
-            @include at(786px){
-                width: 60%;
-            }
-        }
-
-        .aui-search-question{
-            padding-left: 0;
-            width: 100%;
-            font-family: 'Antwerpen Regular';
-
-            @include at(786px){
-                flex-direction: column;
-                padding-bottom: .5em;
-            }
-        }
-    }
-
-    &-question{
-        font-size: 1rem;
-        margin-bottom: 1em;
-        width: 100%;
-
-        @include at(786px){
-            padding-left: 0.5em;
-            margin-bottom: 0;
-            font-size: 1.6rem;
-        }
-    }
-
-    &-box{
-        display: flex;
-        align-items: center;
-        width: 100%;
-
-        &-reverse{
-            flex-direction: row-reverse;
-
-            .m-flyout.is-open{
-                border: 1px solid $border-color;
+        /deep/ .a-input {
+            input:not([class*=a-button]):not([type=checkbox]):not([type=radio]),
+            .a-input select, .a-input textarea{
                 border-left: 0;
             }
         }
     }
 
-    &-icon{
-        background-color: $brand-primary;
-        padding: .65em;
+    &__icon{
+        background-color: $endeavour;
+        padding: 0.96em;
         color: $white;
         cursor: pointer;
+        z-index: 1;
+    }
+
+    &__bar{
+        width: 100%;
     }
 }
 
-
-/* Style for the auto-complete */
-aui-auto-complete{
-    width: 100%;
-
-    .aui-auto-complete{
-        padding: 0;
-
-        input{
-            appearance: none;
-            border: 0;
-            width: 100%;
-            padding: .55rem .85rem;
-            border-radius: 0;
-            color: $black;
-        }   
+/* Fix for a-input */
+/deep/ .a-input{
+    input:not([class*=a-button]):not([type=checkbox]):not([type=radio]),
+    .a-input select, .a-input textarea{
+        border-right: 0;
     }
 }
+
 
 /* Fix for flyout */
-.m-flyout{
+/deep/ .m-flyout{
     width: 100%;
-    border: 1px solid white;
 
     .aui-auto-complete__info{
         border: 0;
     }
-    
+
     &.is-open{
-        border: 1px solid $border-color;
         border-right: 0;
+
         
         .aui-auto-complete__info{
             padding: 1em;
         }
-
-        .m-flyout__content {
-            border-left: 1px solid $border-color;
-            border-right: 1px solid $border-color;
-            border-bottom: 1px solid $border-color;
-            margin-top: 1px;
-        }
     }
 
     &__content {
-        margin-left: -1px;
-        width: calc(100% + 2px);
-        border: 0;
+        margin-top:-1px;
+        margin-right: -1px;
+        width: calc(100% + 1px);
     }
 }
