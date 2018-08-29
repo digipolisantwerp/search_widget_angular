@@ -11,6 +11,18 @@ All notable changes to this project will be documented in this file.
 "### Security" in case of vulnerabilities.
 -->
 
+## [1.0.3] - 2018-08-29
+
+### Fixed
+- Fixed a borked release
+
+
+## [1.0.2] - 2018-08-29 - BORKED
+
+### Fixed
+- Fixed design issues
+
+
 ## [1.0.1] - 2018-08-20
 
 ### Fixed
