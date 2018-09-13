@@ -1,4 +1,5 @@
-import { Component,
+import {
+    Component,
     Input,
     OnInit,
     ViewEncapsulation,
@@ -6,7 +7,8 @@ import { Component,
     EventEmitter,
     ViewChild,
     ElementRef,
-    ChangeDetectorRef } from '@angular/core';
+    ChangeDetectorRef
+} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { of } from 'rxjs/observable/of';
@@ -19,7 +21,7 @@ import { AutoCompleteComponent } from '@acpaas-ui/auto-complete';
 
 @Component({
     selector: 'aui-search',
-    styleUrls: [ './search-widget.component.scss'],
+    styleUrls: ['./search-widget.component.scss'],
     templateUrl: './search-widget.component.html',
     encapsulation: ViewEncapsulation.None,
 })
@@ -32,13 +34,13 @@ export class SearchWidgetComponent implements OnInit {
     /* (Api) Url to provide suggestions for a search */
     @Input() public url = '';
     /** The value of the search */
-    @Input() public searchValue: SearchWidgetValue = {value: ''};
+    @Input() public searchValue: SearchWidgetValue = { value: '' };
     /* List of suggestions provided by the url */
     @Input() public suggestions: SearchWidgetValue[];
     /* Minimum characters before the search */
     @Input() public minCharacters = 2;
-     /* Search incentive text */
-     @Input() public searchIncentiveText = 'Vind je vraag hier';
+    /* Search incentive text */
+    @Input() public searchIncentiveText = 'Vind je vraag hier';
     /* No results text */
     @Input() public noResultsText = 'Geen resultaten gevonden';
     /* Loading text */
@@ -80,7 +82,7 @@ export class SearchWidgetComponent implements OnInit {
     initValue(value: string): void {
         if (this.searchValue && this.searchValue.value) {
             this.searchValue.value = value;
-        }else {
+        } else {
             this.searchValue = { value: value };
         }
         this.cdRef.detectChanges();
@@ -96,7 +98,7 @@ export class SearchWidgetComponent implements OnInit {
             .pipe(
                 debounceTime(300),
                 mergeMap(() => {
-                    if (this.query && (this.query.length > this.minCharacters)) {
+                    if (this.query && (this.query.length >= this.minCharacters)) {
                         if (this.method === 'GET') {
                             return this.searchWidgetService.getSearchWidgetResults(this.url, this.query);
                         } else if (this.method === 'POST') {
@@ -123,14 +125,14 @@ export class SearchWidgetComponent implements OnInit {
 
     public subscribeOpenFlyout(): void {
         this.autocomplete.flyout.opened.subscribe((x) => {
-            if (this.query.length <= this.minCharacters) {
+            if (this.query.length < this.minCharacters) {
                 this.autocomplete.flyout.close();
             }
         });
     }
 
     public onSearch(searchString: string): void {
-        if (searchString.length > this.minCharacters) {
+        if (searchString.length >= this.minCharacters) {
             this.searchChange$.next(searchString);
         } else {
             this.autocomplete.flyout.close();
@@ -142,11 +144,11 @@ export class SearchWidgetComponent implements OnInit {
     public onSelect(data: Event | any): void {
         if (data instanceof Event) {
             // do nothing: we don't respond to text selection events
-        } else if (data) {
+        } else if (data && data.length >= this.minCharacters) {
             this.search.emit(data);
             this.query = data;
-        }else if (!data && this.query) {
-            if (this.query.length > this.minCharacters) {
+        } else if (!data && this.query) {
+            if (this.query.length >= this.minCharacters) {
                 this.search.emit(this.query);
             }
         }
