@@ -21,7 +21,7 @@ describe('SearchWidgetComponent', () => {
     const provideTestValues = (count: number = 1) => {
         testValues = [];
         for (let i = 0; i < count; i++) {
-            testValues.push({value: 'string'});
+            testValues.push({ value: 'string' });
         }
     };
 
@@ -41,7 +41,7 @@ describe('SearchWidgetComponent', () => {
         comp.method = 'GET';
         comp.language = 'NL';
         comp.url = '';
-        comp.searchValue = {value: ''};
+        comp.searchValue = { value: '' };
         comp.suggestions = [];
         comp.minCharacters = 2;
         comp.searchIncentiveText = 'Vind je vraag hier';
@@ -87,10 +87,10 @@ describe('SearchWidgetComponent', () => {
     it('Selecting a suggestion emits search', (done) => {
         comp.ngOnInit();
         comp.search.subscribe((object) => {
-            expect(object).toEqual({value: 'test'});
+            expect(object).toEqual('test');
             done();
         });
-        comp.onSelect({value: 'test'});
+        comp.onSelect('test');
         fixture.detectChanges();
     });
 
