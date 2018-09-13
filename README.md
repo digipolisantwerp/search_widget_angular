@@ -35,7 +35,7 @@ Import the component in your module:
 In the index.html, include the core branding stylesheet:
 
 ```html
-<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/2.0.1/main.min.css">
+  <link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/2.3.0/main.min.css">
 ```
 
 In your template:
