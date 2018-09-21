@@ -96,7 +96,7 @@ describe('SearchWidgetComponent', () => {
 
     it('Selecting text calls onSelect', (done) => {
         spyOn(comp, 'onSelect');
-        element = debugElement.query(By.css('.m-search__box__icon')).nativeElement.click();
+        element = debugElement.query(By.css('.a-button')).nativeElement.click();
         expect(comp.onSelect).toHaveBeenCalled();
         done();
     });

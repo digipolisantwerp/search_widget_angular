@@ -1,5 +1,5 @@
 
-@import "~@a-ui/core/dist/assets/styles/quarks/_quarks.colors.scss";
+@import "~@a-ui/core/dist/assets/styles/quarks";
 
 /* Element m-search */
 :host{
@@ -9,7 +9,7 @@
     z-index: 2;
     display: block;
     
-    @media (min-width: 786px){
+    @include at($screen-sm) {
         flex-direction: row;
         width: 80%;
     }
@@ -22,6 +22,13 @@
     align-items: flex-start;
     width: 100%;
 
+    /deep/ .a-input input{
+        padding: 0 0.75rem;
+        @include at($screen-sm) {
+            padding: 0 1.5rem;
+        }
+    }
+
     &--reverse{
         flex-direction: row-reverse;
         align-items: flex-start;
@@ -31,6 +38,7 @@
         }
 
         /deep/ .a-input {
+            
             input:not([class*=a-button]):not([type=checkbox]):not([type=radio]),
             .a-input select, .a-input textarea{
                 border-left: 0;

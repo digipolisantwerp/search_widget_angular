@@ -52,7 +52,7 @@ export class SearchWidgetComponent implements OnInit {
     /** A limit for suggestions */
     @Input() public limit = '';
     /** Change location of searchbox */
-    @Input() public iconLeft = false;
+    @Input() public iconLeft;
 
     /** the event fired when the search is triggered */
     @Output() public search: EventEmitter<any> = new EventEmitter<any>();
