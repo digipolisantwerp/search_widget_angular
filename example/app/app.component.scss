@@ -1,10 +1,15 @@
 $green: #018C95;
+$tropical-rain-forrest: darken(#018C95, 5%);
 
 aui-search{
     padding: 3em;
     display: block;
 }
 
-.aui-search .aui-search-icon{
+aui-search .a-button{
     background-color: $green;
+
+    &:focus, &:hover{
+        background-color: $tropical-rain-forrest;
+    }
 }
