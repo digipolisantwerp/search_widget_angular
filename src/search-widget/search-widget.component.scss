@@ -2,7 +2,7 @@
 @import "~@a-ui/core/dist/assets/styles/quarks";
 
 /* Element m-search */
-:host{
+:host {
     position: relative;
     width: 100%;
     margin: 0 auto;
@@ -16,11 +16,11 @@
 }
 
 /* class m-search__box */
-.m-search__box{
+.m-search__box {
     width: 100%;
     position: relative;
 
-    .a-input input{
+    .a-input input {
         padding: 0 3rem 0 .75rem;
         
         @include at($screen-sm) {
@@ -28,17 +28,17 @@
         }
     }
 
-    &--reverse{
-       .a-button{
+    &--reverse {
+       .a-button {
            right: auto;
            left: 0;
        }
 
-        /deep/ .m-flyout__content{
+        /deep/ .m-flyout__content {
             margin-left: -1px;
         }
 
-        .a-input input{
+        .a-input input {
             padding: 0 .75rem 0 3rem;
             
             @include at($screen-sm) {
@@ -47,39 +47,39 @@
         }
     }
 
-    .a-button{
+    .a-button {
         position: absolute;
         right: 0;
         top: 0;
     }
 
-    &__bar{
+    &__bar {
         width: 100%;
     }
 }
 
 /* Fix for a-input */
-/deep/ .a-input{
+/deep/ .a-input {
     input:not([class*=a-button]):not([type=checkbox]):not([type=radio]),
-    .a-input select, .a-input textarea{
+    .a-input select, .a-input textarea {
         border-right: 0;
     }
 }
 
 
 /* Fix for flyout */
-/deep/ .m-flyout{
+/deep/ .m-flyout {
     width: 100%;
 
-    .aui-auto-complete__info{
+    .aui-auto-complete__info {
         border: 0;
     }
 
-    &.is-open{
+    &.is-open {
         border-right: 0;
 
         
-        .aui-auto-complete__info{
+        .aui-auto-complete__info {
             padding: 1em;
         }
     }
