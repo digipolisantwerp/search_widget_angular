@@ -21,10 +21,10 @@
     position: relative;
 
     .a-input input {
-        padding: 0 3rem 0 .75rem;
+        padding: 0 $spacer-lg 0 $spacer-xs;
         
         @include at($screen-sm) {
-            padding: 0 3rem 0 1.5rem;
+            padding: 0 $spacer-lg 0 $spacer;
         }
     }
 
@@ -39,10 +39,10 @@
         }
 
         .a-input input {
-            padding: 0 .75rem 0 3rem;
+            padding: 0 $spacer-xs 0 $spacer-xl;
             
             @include at($screen-sm) {
-                padding: 0 .75rem 0 3rem;
+                padding: 0 $spacer-xs 0 $spacer-xl;
             }
         }
     }
@@ -58,30 +58,12 @@
     }
 }
 
-/* Fix for a-input */
-/deep/ .a-input {
-    input:not([class*=a-button]):not([type=checkbox]):not([type=radio]),
-    .a-input select, .a-input textarea {
-        border-right: 0;
-    }
-}
-
-
 /* Fix for flyout */
 /deep/ .m-flyout {
     width: 100%;
 
     .aui-auto-complete__info {
         border: 0;
-    }
-
-    &.is-open {
-        border-right: 0;
-
-        
-        .aui-auto-complete__info {
-            padding: 1em;
-        }
     }
 
     &__content {
