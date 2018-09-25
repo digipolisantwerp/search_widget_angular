@@ -11,6 +11,21 @@ All notable changes to this project will be documented in this file.
 "### Security" in case of vulnerabilities.
 -->
 
+## [1.0.5] - 2018-08-29
+
+### Fixed
+- Fixed some layout issues
+
+
+## [1.0.4] - 2018-09-13
+
+### Fixed
+- Fixed an issue with minimum characters
+
+### Changed
+- Updated core branding
+
+
 ## [1.0.3] - 2018-08-29
 
 ### Fixed
