@@ -99,6 +99,9 @@ export class SearchWidgetComponent implements OnInit {
                 debounceTime(300),
                 mergeMap(() => {
                     if (this.query && (this.query.length >= this.minCharacters)) {
+                        if (typeof this.query === 'string') {
+                            this.query = this.query.toLowerCase();
+                        }
                         if (this.method === 'GET') {
                             return this.searchWidgetService.getSearchWidgetResults(this.url, this.query);
                         } else if (this.method === 'POST') {
