@@ -1,5 +1,5 @@
 
-@import "~@a-ui/core/dist/assets/styles/quarks";
+@import "~@a-ui/core/dist/assets/styles/_quarks";
 
 /* Element m-search */
 :host {
@@ -8,7 +8,7 @@
     margin: 0 auto;
     z-index: 2;
     display: block;
-    
+
     @include at($screen-sm) {
         flex-direction: row;
         width: 80%;
@@ -22,7 +22,7 @@
 
     .a-input input {
         padding: 0 $spacer-lg 0 $spacer-xs;
-        
+
         @include at($screen-sm) {
             padding: 0 $spacer-lg 0 $spacer;
         }
@@ -40,7 +40,7 @@
 
         .a-input input {
             padding: 0 $spacer-xs 0 $spacer-xl;
-            
+
             @include at($screen-sm) {
                 padding: 0 $spacer-xs 0 $spacer-xl;
             }
