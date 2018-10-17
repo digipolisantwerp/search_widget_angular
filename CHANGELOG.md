@@ -10,10 +10,13 @@ All notable changes to this project will be documented in this file.
 "### Fixed" for any bug fixes.
 "### Security" in case of vulnerabilities.
 -->
+
+
 ## [1.0.6] - 2018-10-17
 
 ### Fixed
 - Fixed lowercase query
+
 
 ## [1.0.5] - 2018-09-26
 
@@ -52,6 +55,11 @@ All notable changes to this project will be documented in this file.
 - Initial release.
 
 
-[Unreleased]: https://github.com/digipolisantwerp/search_widget_angular/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/digipolisantwerp/search_widget_angular/compare/v1.0.6...HEAD
+[1.0.6]: https://github.com/digipolisantwerp/search_widget_angular/compare/v1.0.5...v1.0.6
+[1.0.5]: https://github.com/digipolisantwerp/search_widget_angular/compare/v1.0.4...v1.0.5
+[1.0.4]: https://github.com/digipolisantwerp/search_widget_angular/compare/v1.0.3...v1.0.4
+[1.0.3]: https://github.com/digipolisantwerp/search_widget_angular/compare/v1.0.2...v1.0.3
+[1.0.2]: https://github.com/digipolisantwerp/search_widget_angular/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/digipolisantwerp/search_widget_angular/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/digipolisantwerp/search_widget_angular/compare/v0.0.1...v1.0.0
