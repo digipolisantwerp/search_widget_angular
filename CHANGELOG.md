@@ -10,8 +10,12 @@ All notable changes to this project will be documented in this file.
 "### Fixed" for any bug fixes.
 "### Security" in case of vulnerabilities.
 -->
+## [1.0.6] - 2018-10-17
 
-## [1.0.5] - 2018-08-29
+### Fixed
+- Fixed lowercase query
+
+## [1.0.5] - 2018-09-26
 
 ### Fixed
 - Fixed some layout issues
