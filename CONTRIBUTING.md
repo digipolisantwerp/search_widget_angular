@@ -4,7 +4,8 @@ First off, thanks for taking the time to contribute! :+1:
 
 ## I just have a question
 
-You can launch a quick question on the [#acpaas-ui slack channel](https://dgpls.slack.com/messages/C4M60PQJF).
+If you're not yet a member of our DigAnt Café slack community, you can easily [join here](https://digantcafe-slack.digipolis.be).
+Use the [#acpaas-ui channel](https://digantcafe.slack.com/messages/CDDLYJU65/) on Slack to ask questions about using ACPaaS UI.
 
 For something that requires longer discussion it may be better to book an issue.
 
@@ -71,13 +72,13 @@ If possible, do provide meaningful and clean commit messages. A [good commit mes
 ### Publishing
 
 Follow these steps to publish a new version of the package.
-You must have a Digipolis account with access to Nexus.
+You must be a member of the @acpaas-ui-widgets organization on GitHub.
 
 1. Increment the version in package.json
-2. Log in to the the private registry
+2. Log in to the npmjs registry
 
     ```sh
-    > npm login --registry=https://nexusrepo.antwerpen.be/repository/npm-private/
+    > npm login
     ```
 
 3. Publish the package
@@ -85,5 +86,5 @@ You must have a Digipolis account with access to Nexus.
     ```sh
     > npm run build
     > cd dist
-    > npm publish --registry=https://nexusrepo.antwerpen.be/repository/npm-private/
+    > npm publish
     ```
