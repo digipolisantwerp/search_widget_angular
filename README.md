@@ -1,8 +1,6 @@
 # Search Smart Widget UI (Angular)
 
-This is the Angular 5+ UI for a Smart Widget implementing a search bar with suggestions. It is matched by a corresponding back-end service which is needed when running it in remote mode.
-
-Link to bff: https://bitbucket.antwerpen.be/projects/ASA/repos/search_api_nodejs/browse
+This is the Angular 6+ UI for a Smart Widget implementing a search bar with suggestions. It is matched by a [corresponding back-end service](https://bitbucket.antwerpen.be/projects/ASA/repos/search_api_nodejs/browse) which is needed when running it in remote mode.
 
 ![screenshot](example.png)
 
@@ -12,13 +10,13 @@ There is a demo app, see below for instructions on running it.
 
 ### Installing
 
-Copy the .npmrc file from this repo to your local repo to set up the link to nexusrepo.antwerpen.be npm repository.
-
-Then install (you will need to be connected to the Digipolis network):
-
 ```sh
 > npm install @acpaas-ui-widgets/ngx-search
 ```
+
+### Using
+
+A BFF service should be running (see demo app instructions below for how to start one).
 
 Import the component in your module:
 
@@ -35,18 +33,26 @@ Import the component in your module:
 In the index.html, include the core branding stylesheet:
 
 ```html
-  <link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/2.3.0/main.min.css">
+<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/3.0.3/main.min.css">
 ```
 
-In your template:
+> For projects that are still using Angular 5, we are [maintaining a v1 branch](https://github.com/digipolisantwerp/search_widget_angular/tree/v1), which will still receive bug fixes if needed.
+
+```sh
+> npm install @acpaas-ui-widgets/ngx-search@"<2.0.0"
+```
+
+### In your template:
+
 
 ```html
 <aui-search url="http://localhost:4200/suggestions.json"></aui-search>
 ```
+
 (Replace the url of the BFF service.)
 
+### Supported attributes
 
-Supported attributes:
 - **method**: POST or a GET method to get suggestions (default: GET)
 - **language**: Language of the query suggestions
 - **url**: (Api) Url to provide suggestions for a search
@@ -62,15 +68,16 @@ Supported attributes:
 - **limit**: Give a limit for suggestions per page
 - **iconLeft**: Change the location of searchbox (default: false)
 
-Events:
-- **search**:  The event fired when the search is triggered
+### Events
 
+- **search**:  The event fired when the search is triggered
 
 The backing service implements the following protocol:
 
 - POST /path/to/endpoint with raw body object:
 - **query**: the value of search
 - **language**: the language of the search
+
 Example: 
 ```json
   {
@@ -79,7 +86,6 @@ Example:
   }
 ```
 - suggestions = JSON-encoded array of [SearchWidgetValue](src/search-widget/search-widget.types.ts) objects
-
 
 CSS examples:
 
@@ -92,8 +98,6 @@ CSS examples:
 
 ## Run the demo app
 
-Set up the .npmrc (see above), then run:
-
 ```sh
 > npm install
 > npm start
@@ -101,7 +105,7 @@ Set up the .npmrc (see above), then run:
 
 Browse to [localhost:4200](http://localhost:4200)
 
-To use the example app, you will need to have also started the corresponding back-end service.
+To use the example app, you will need to have also started the [corresponding back-end service](https://bitbucket.antwerpen.be/projects/ASA/repos/search_api_nodejs/browse).
 
 ## Contributing
 
