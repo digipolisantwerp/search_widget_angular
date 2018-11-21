@@ -7,13 +7,17 @@ import {
     EventEmitter,
     ViewChild,
     ElementRef,
-    ChangeDetectorRef
+    ChangeDetectorRef,
 } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
-import { of } from 'rxjs/observable/of';
-import { debounceTime } from 'rxjs/operators/debounceTime';
-import { mergeMap } from 'rxjs/operators/mergeMap';
+import {
+  of as observableOf,
+  Observable,
+  Observer,
+} from 'rxjs';
+import {
+  debounceTime,
+  mergeMap,
+} from 'rxjs/operators';
 
 import { SearchWidgetValue } from './search-widget.types';
 import { SearchWidgetService } from './search-widget.service';
@@ -116,7 +120,7 @@ export class SearchWidgetComponent implements OnInit {
                         // If debouncetime is >100, the user is faster then the debouncetime
                         // API-call will take the last item in the observer which can be
                         // smaller then the minCharacters
-                        return of(null);
+                        return observableOf(null);
                     }
                 })
             ).subscribe(suggestions => {
