@@ -17,7 +17,7 @@ import { mergeMap } from 'rxjs/operators/mergeMap';
 
 import { SearchWidgetValue } from './search-widget.types';
 import { SearchWidgetService } from './search-widget.service';
-import { AutoCompleteComponent } from '@acpaas-ui/auto-complete';
+import { AutoCompleteComponent } from '@acpaas-ui/ngx-components/forms';
 
 @Component({
     selector: 'aui-search',
