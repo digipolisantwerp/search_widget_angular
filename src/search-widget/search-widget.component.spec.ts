@@ -1,7 +1,15 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
+import {
+  TestBed,
+  ComponentFixture,
+} from '@angular/core/testing';
 
-import { SearchWidgetComponent, SearchWidgetService, SearchWidgetValue, SearchWidgetModule } from '..';
-import { of } from 'rxjs/observable/of';
+import {
+  SearchWidgetComponent,
+  SearchWidgetService,
+  SearchWidgetValue,
+  SearchWidgetModule,
+} from '..';
+import { of as observableOf } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -14,7 +22,7 @@ describe('SearchWidgetComponent', () => {
 
     class MockSearchWidgetService {
         public getSearchWidgetResults(dataSource: any, search: string) {
-            return of(testValues);
+            return observableOf(testValues);
         }
     }
 

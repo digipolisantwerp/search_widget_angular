@@ -12,6 +12,12 @@ All notable changes to this project will be documented in this file.
 -->
 
 
+## [2.0.0] - 2018-11-22
+
+ ### Changed
+ - [BREAKING] Upgraded the widget to work with Angular 6+
+
+
 ## [1.0.6] - 2018-10-17
 
 ### Fixed
@@ -55,7 +61,8 @@ All notable changes to this project will be documented in this file.
 - Initial release.
 
 
-[Unreleased]: https://github.com/digipolisantwerp/search_widget_angular/compare/v1.0.6...HEAD
+[Unreleased]: https://github.com/digipolisantwerp/search_widget_angular/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/digipolisantwerp/search_widget_angular/compare/v1.0.6...v2.0.0
 [1.0.6]: https://github.com/digipolisantwerp/search_widget_angular/compare/v1.0.5...v1.0.6
 [1.0.5]: https://github.com/digipolisantwerp/search_widget_angular/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/digipolisantwerp/search_widget_angular/compare/v1.0.3...v1.0.4
