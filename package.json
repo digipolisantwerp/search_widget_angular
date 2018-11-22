@@ -37,9 +37,7 @@
   "peerDependencies": {
     "@angular/common": "^6.0.0",
     "@angular/core": "^6.0.0",
-    "@angular/forms": "^6.0.0"
-  },
-  "dependencies": {
+    "@angular/forms": "^6.0.0",
     "@acpaas-ui/ngx-components": "^1.0.5"
   },
   "devDependencies": {
