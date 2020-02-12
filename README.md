@@ -1,5 +1,11 @@
 # Search Smart Widget UI (Angular)
 
+## Deprecated
+
+This widget has been deprecated and should not be used for new projects, although the code can be used as inspiration.
+
+## Introduction
+
 This is the Angular 6+ UI for a Smart Widget implementing a search bar with suggestions. It is matched by a [corresponding back-end service](https://bitbucket.antwerpen.be/projects/ASA/repos/search_api_nodejs/browse) which is needed when running it in remote mode.
 
 ![screenshot](example.png)
